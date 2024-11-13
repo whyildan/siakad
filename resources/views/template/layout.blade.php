@@ -76,12 +76,12 @@
 
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ url('/datasiswa') }}" class="menu-link">
+                                <a href="{{ url('/student') }}" class="menu-link">
                                     <div data-i18n="Without menu">Siswa</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="layouts-without-navbar.html" class="menu-link">
+                                <a href="{{ url('/class') }}" class="menu-link">
                                     <div data-i18n="Without navbar">Kelas</div>
                                 </a>
                             </li>
@@ -93,6 +93,25 @@
                             <li class="menu-item">
                                 <a href="layouts-container.html" class="menu-link">
                                     <div data-i18n="Container">Ekstrakulikuler</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-id-card"></i>
+                            <div data-i18n="Layouts">Manajemen Guru</div>
+                        </a>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ url('/teacher') }}" class="menu-link">
+                                    <div data-i18n="Without menu">Guru</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('/journal') }}" class="menu-link">
+                                    <div data-i18n="Without navbar">Jurnal</div>
                                 </a>
                             </li>
                         </ul>
