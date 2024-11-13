@@ -19,9 +19,9 @@
 
                         <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username"
-                                    placeholder="Masukkan username" autofocus />
+                                <label for="Nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="nama" name="nama"
+                                    placeholder="Masukkan nama" autofocus />
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -52,7 +52,7 @@
 
                         <p class="text-center">
                             <span>Sudah punya akun?</span>
-                            <a href="{{ url('/login')}}">
+                            <a href="{{ url('/login') }}">
                                 <span>Login</span>
                             </a>
                         </p>
