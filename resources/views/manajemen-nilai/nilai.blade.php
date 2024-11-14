@@ -2,10 +2,10 @@
 
 @section('content-page')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Manajemen Data Absen</h4>
+        <h4 class="fw-bold py-3 mb-4">Manajemen Data Nilai</h4>
         <div class="card">
             <div class="card-header d-flex justify-content-end">
-                <button type="button" class="btn btn-primary"><a href="{{ url('/addpresence') }}"
+                <button type="button" class="btn btn-primary"><a href="{{ url('/addgrade') }}"
                         class="text-white text-decoration-none">Tambah</a></button>
             </div>
             <div class="table-responsive text-nowrap">
@@ -25,7 +25,7 @@
                             <td>Jurusan</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-warning"><a
-                                        class="text-white text-decoration-none" href="{{ url('/editpresence') }}"><i
+                                        class="text-white text-decoration-none" href="{{ url('/editgrade') }}"><i
                                             class="bx bx-edit-alt me-1"></i>
                                         Edit</a></button>
                                 <button type="button" class="btn btn-sm btn-danger"><a

@@ -95,6 +95,11 @@
                                     <div data-i18n="Container">Ekstrakurikuler</div>
                                 </a>
                             </li>
+                            <li class="menu-item">
+                                <a href="{{ url('/presence') }}" class="menu-link">
+                                    <div data-i18n="Container">Absen</div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="menu-item">
@@ -102,7 +107,7 @@
                             <i class="menu-icon tf-icons bx bx-id-card"></i>
                             <div data-i18n="Layouts">Manajemen Guru</div>
                         </a>
-
+                        
                         <ul class="menu-sub">
                             <li class="menu-item">
                                 <a href="{{ url('/teacher') }}" class="menu-link">
@@ -117,6 +122,11 @@
                             <li class="menu-item">
                                 <a href="{{ url('/subject') }}" class="menu-link">
                                     <div data-i18n="Without navbar">Mapel</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('/grade') }}" class="menu-link">
+                                    <div data-i18n="Container">Input Nilai</div>
                                 </a>
                             </li>
                         </ul>

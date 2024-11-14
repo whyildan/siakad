@@ -12,7 +12,7 @@
                 <div class="col-xl">
                     <div class="card mb-4">
                         <div class="card-header d-flex justify-content-end">
-                            <button type="button" class="btn btn-warning"><a href="{{ url('/') }}"
+                            <button type="button" class="btn btn-warning"><a href="{{ url('/presence') }}"
                                     class="text-white text-decoration-none">Kembali</a></button>
                         </div>
                         <div class="card-body">
