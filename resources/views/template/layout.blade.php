@@ -86,13 +86,13 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="layouts-container.html" class="menu-link">
+                                <a href="{{ url('/parent') }}" class="menu-link">
                                     <div data-i18n="Container">Orang Tua</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="layouts-container.html" class="menu-link">
-                                    <div data-i18n="Container">Ekstrakulikuler</div>
+                                <a href="{{ url('/extracurricular') }}" class="menu-link">
+                                    <div data-i18n="Container">Ekstrakurikuler</div>
                                 </a>
                             </li>
                         </ul>
@@ -112,6 +112,11 @@
                             <li class="menu-item">
                                 <a href="{{ url('/journal') }}" class="menu-link">
                                     <div data-i18n="Without navbar">Jurnal</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('/subject') }}" class="menu-link">
+                                    <div data-i18n="Without navbar">Mapel</div>
                                 </a>
                             </li>
                         </ul>

@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\ekskulController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\jurnalController;
+use App\Http\Controllers\mapelController;
+use App\Http\Controllers\orangtuaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,3 +36,15 @@ Route::get('/editteacher', [guruController::class, 'editguru']);
 Route::get('/journal', [jurnalController::class, 'datajurnal']);
 Route::get('/addjournal', [jurnalController::class, 'tambahjurnal']);
 Route::get('/editjournal', [jurnalController::class, 'editjurnal']);
+
+Route::get('/subject', [mapelController::class, 'datamapel']);
+Route::get('/addsubject', [mapelController::class, 'tambahmapel']);
+Route::get('/editsubject', [mapelController::class, 'editmapel']);
+
+Route::get('/parent', [orangtuaController::class, 'dataorangtua']);
+Route::get('/addparent', [orangtuaController::class, 'tambahorangtua']);
+Route::get('/editparent', [orangtuaController::class, 'editorangtua']);
+
+Route::get('/extracurricular', [ekskulController::class, 'dataekskul']);
+Route::get('/addextracurricular', [ekskulController::class, 'tambahekskul']);
+Route::get('/editextracurricular', [ekskulController::class, 'editekskul']);
