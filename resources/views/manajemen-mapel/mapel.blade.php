@@ -13,15 +13,15 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kelas</th>
-                            <th>Jurusan</th>
+                            <th>Mapel</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+
                         <tr>
                             <td>1</td>
-                            <td>X</td>
+                            <td>pai</td>
                             <td>Jurusan</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-warning"><a
@@ -34,6 +34,7 @@
                                         Delete</a></button>
                             </td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>

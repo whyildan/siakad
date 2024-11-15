@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
+use Exception;
 use Illuminate\Http\Request;
 
 class mapelController extends Controller
@@ -14,6 +16,19 @@ class mapelController extends Controller
     public function tambahmapel()
     {
         return view('manajemen-mapel.tambah-mapel', ['hideNavbar' => true]);
+    }
+
+    public function storesubject(Request $request)
+    {
+        try {
+            Mapel::create([
+                'nama_mapel' => $request->nama_mapel
+            ]);
+
+            return redirect('/subject');
+        }catch(\Exception $e) {
+            return redirect()->back();
+        }
     }
 
     public function editmapel()
