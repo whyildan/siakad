@@ -19,4 +19,9 @@ class Guru extends Model
     ];
 
     protected $hidden;
+
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class, 'mapel_id');
+    }
 }

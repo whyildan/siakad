@@ -33,7 +33,10 @@ Route::get('/editclass', [kelasController::class, 'editkelas']);
 
 Route::get('/teacher', [guruController::class, 'dataguru']);
 Route::get('/addteacher', [guruController::class, 'tambahguru']);
-Route::get('/editteacher', [guruController::class, 'editguru']);
+Route::post('/createteacher', [guruController::class, 'createteacher']);
+Route::get('/editteacher/{id}', [guruController::class, 'editguru']);
+Route::post('/updateteacher/{id}', [guruController::class, 'updateteacher']);
+Route::get('/deleteteacher/{id}', [guruController::class, 'hapusguru']);
 
 Route::get('/journal', [jurnalController::class, 'datajurnal']);
 Route::get('/addjournal', [jurnalController::class, 'tambahjurnal']);
