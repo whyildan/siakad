@@ -41,8 +41,10 @@ Route::get('/editjournal', [jurnalController::class, 'editjurnal']);
 
 Route::get('/subject', [mapelController::class, 'datamapel']);
 Route::get('/addsubject', [mapelController::class, 'tambahmapel']);
-Route::post('/storesubject', [mapelController::class, 'storesubject'])->name('store.subject');
-Route::get('/editsubject', [mapelController::class, 'editmapel']);
+Route::post('/storesubject', [mapelController::class, 'storesubject']);
+Route::get('/editsubject/{id}', [mapelController::class, 'editmapel']);
+Route::post('/updatesubject/{id}', [mapelController::class, 'updatesubject']);
+Route::get('/deletesubject/{id}', [mapelController::class, 'hapusmapel']);
 
 Route::get('/parent', [orangtuaController::class, 'dataorangtua']);
 Route::get('/addparent', [orangtuaController::class, 'tambahorangtua']);
