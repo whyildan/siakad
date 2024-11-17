@@ -5,6 +5,12 @@
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
+            @if (Session::has('gagal'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> {{ Session::get('gagal') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <h4 class="fw-bold py-3 mb-4">Edit Data Guru</h4>
 
             <!-- Basic Layout -->
@@ -16,7 +22,8 @@
                                     class="text-white text-decoration-none">Kembali</a></button>
                         </div>
                         <div class="card-body">
-                            <form action="{{ url("/updateteacher/$guru->id") }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url("/updateteacher/$guru->id") }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label class="form-label" for="nama">Nama</label>
@@ -25,15 +32,18 @@
                                                 class="bx bx-user"></i></span>
                                         <input type="text" name="nama" class="form-control"
                                             id="basic-icon-default-fullname" placeholder="Masukkan Nama" aria-label="Nama"
-                                            aria-describedby="basic-icon-default-fullname2" value="{{ $guru->nama }}" required/>
+                                            aria-describedby="basic-icon-default-fullname2" value="{{ $guru->nama }}"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="mapel_id" class="form-label">Mapel</label>
                                     <select id="mapel_id" name="mapel_id" class="form-select" required>
-                                        <option disabled >Pilih Mapel</option>
+                                        <option disabled>Pilih Mapel</option>
                                         @foreach ($mapels as $mapel)
-                                            <option value="{{ $mapel->id}}" {{ $guru->mapel_id == $mapel->id ? 'selected' : '' }}>{{ $mapel->nama_mapel }}</option>
+                                            <option value="{{ $mapel->id }}"
+                                                {{ $guru->mapel_id == $mapel->id ? 'selected' : '' }}>
+                                                {{ $mapel->nama_mapel }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -44,7 +54,8 @@
                                                 class="bx bx-user"></i></span>
                                         <input type="number" name="telepon" class="form-control"
                                             id="basic-icon-default-fullname" placeholder="08xxxxxx" aria-label="Telepon"
-                                            aria-describedby="basic-icon-default-fullname2" value="{{ $guru->telepon }}" required />
+                                            aria-describedby="basic-icon-default-fullname2" value="{{ $guru->telepon }}"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="mb-3">

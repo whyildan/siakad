@@ -55,7 +55,7 @@
                                 <div class="mb-3">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
-                                  </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Send</button>
                             </form>
                         </div>

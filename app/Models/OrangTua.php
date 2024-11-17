@@ -17,4 +17,9 @@ class OrangTua extends Model
         'alamat',
         'siswa_id'
     ];
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class);
+    }
 }

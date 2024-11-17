@@ -17,4 +17,14 @@ class Kelas extends Model
     ];
 
     protected $hidden;
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
+
+    public function siswas()
+    {
+        return $this->hasMany(Siswa::class, 'kelas_id');
+    }
 }

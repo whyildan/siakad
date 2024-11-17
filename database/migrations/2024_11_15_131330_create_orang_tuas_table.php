@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('siswa_id')->references('id')->on('siswas')->cascadeOnDelete();        });
+            $table->foreign('siswa_id')->references('id')->on('siswas')->cascadeOnDelete();
+        });
     }
 
     /**

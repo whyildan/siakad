@@ -20,4 +20,14 @@ class Siswa extends Model
     ];
 
     protected $hidden;
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+
+    public function orangtua()
+    {
+        return $this->hasOne(OrangTua::class);
+    }
 }

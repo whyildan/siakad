@@ -25,11 +25,17 @@ Route::get('/dashboard', [homeController::class, 'dashboard']);
 
 Route::get('/student', [siswaController::class, 'datasiswa']);
 Route::get('/addstudent', [siswaController::class, 'tambahsiswa']);
-Route::get('/editstudent', [siswaController::class, 'editsiswa']);
+Route::post('/createstudent', [siswaController::class, 'createstudent']);
+Route::get('/editstudent/{id}', [siswaController::class, 'editsiswa']);
+Route::post('/updatestudent/{id}', [siswaController::class, 'updatestudent']);
+Route::get('/deletestudent/{id}', [siswaController::class, 'deletestudent']);
 
 Route::get('/class', [kelasController::class, 'datakelas']);
 Route::get('/addclass', [kelasController::class, 'tambahkelas']);
-Route::get('/editclass', [kelasController::class, 'editkelas']);
+Route::post('/createclass', [kelasController::class, 'createclass']);
+Route::get('/editclass/{id}', [kelasController::class, 'editkelas']);
+Route::post('/updateclass/{id}', [kelasController::class, 'updateclass']);
+Route::get('/deleteclass/{id}', [kelasController::class, 'deleteclass']);
 
 Route::get('/teacher', [guruController::class, 'dataguru']);
 Route::get('/addteacher', [guruController::class, 'tambahguru']);
@@ -51,11 +57,15 @@ Route::get('/deletesubject/{id}', [mapelController::class, 'hapusmapel']);
 
 Route::get('/parent', [orangtuaController::class, 'dataorangtua']);
 Route::get('/addparent', [orangtuaController::class, 'tambahorangtua']);
-Route::get('/editparent', [orangtuaController::class, 'editorangtua']);
+Route::post('/createparent', [orangtuaController::class, 'createparent']);
+Route::get('/editparent/{id}', [orangtuaController::class, 'editorangtua']);
 
 Route::get('/extracurricular', [ekskulController::class, 'dataekskul']);
 Route::get('/addextracurricular', [ekskulController::class, 'tambahekskul']);
-Route::get('/editextracurricular', [ekskulController::class, 'editekskul']);
+Route::post('/createextracurricular', [ekskulController::class, 'createextra']);
+Route::get('/editextracurricular/{id}', [ekskulController::class, 'editekskul']);
+Route::post('/updateextracurricular/{id}', [ekskulController::class, 'updateextra']);
+Route::get('/deleteextracurricular/{id}', [ekskulController::class, 'deleteextra']);
 
 Route::get('/presence', [absenController::class, 'dataabsen']);
 Route::get('/addpresence', [absenController::class, 'tambahabsen']);

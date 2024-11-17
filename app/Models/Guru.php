@@ -24,4 +24,14 @@ class Guru extends Model
     {
         return $this->belongsTo(Mapel::class, 'mapel_id');
     }
+
+    public function ekstrakurikuler()
+    {
+        return $this->hasOne(Ekstrakurikuler::class);
+    }
+
+    public function kelas()
+    {
+        return $this->hasOne(Kelas::class, 'guru_id');
+    }
 }

@@ -17,4 +17,9 @@ class Ekstrakurikuler extends Model
     ];
 
     protected $hidden;
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
 }

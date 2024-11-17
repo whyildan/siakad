@@ -5,6 +5,12 @@
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
+            @if (Session::has('gagal'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> {{ Session::get('gagal') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <h4 class="fw-bold py-3 mb-4">Tambah Data Siswa</h4>
 
             <!-- Basic Layout -->
@@ -16,56 +22,50 @@
                                     class="text-white text-decoration-none">Kembali</a></button>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="{{ url('/createstudent') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                                     <div class="input-group input-group-merge">
                                         <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                                 class="bx bx-user"></i></span>
                                         <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                            placeholder="Nama Siswa" aria-label="Nama Siswa"
-                                            aria-describedby="basic-icon-default-fullname2" />
+                                            placeholder="Nama" aria-label="Nama"
+                                            aria-describedby="basic-icon-default-fullname2" name="nama" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-company">NIS</label>
-                                    <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-company2" class="input-group-text"><i
-                                                class="bx bx-buildings"></i></span>
-                                        <input type="text" id="basic-icon-default-company" class="form-control"
-                                            placeholder="112233" aria-label="112233"
-                                            aria-describedby="basic-icon-default-company2" />
-                                    </div>
+                                    <label for="kelas_id" class="form-label">Kelas</label>
+                                    <select id="kelas_id" name="kelas_id" class="form-select" required>
+                                        <option>Pilih Kelas</option>
+                                        @foreach ($kelas as $kls)
+                                            <option value="{{ $kls->id }}">{{ $kls->nama_kelas }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-email">Email</label>
-                                    <div class="input-group input-group-merge">
-                                        <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                        <input type="text" id="basic-icon-default-email" class="form-control"
-                                            placeholder="john.doe" aria-label="john.doe"
-                                            aria-describedby="basic-icon-default-email2" />
-                                        <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-                                    </div>
-                                    <div class="form-text">You can use letters, numbers & periods</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-phone">Phone No</label>
+                                    <label class="form-label" for="basic-icon-default-phone">Tanggal Lahir</label>
                                     <div class="input-group input-group-merge">
                                         <span id="basic-icon-default-phone2" class="input-group-text"><i
                                                 class="bx bx-phone"></i></span>
-                                        <input type="text" id="basic-icon-default-phone" class="form-control phone-mask"
-                                            placeholder="658 799 8941" aria-label="658 799 8941"
-                                            aria-describedby="basic-icon-default-phone2" />
+                                        <input type="date" id="basic-icon-default-phone" class="form-control phone-mask"
+                                            placeholder="xx/xx/xxxx" aria-label="xx/xx/xxxx"
+                                            aria-describedby="basic-icon-default-phone2" name="tanggal_lahir" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-message">Message</label>
+                                    <label class="form-label" for="basic-icon-default-phone">Telepon</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-message2" class="input-group-text"><i
-                                                class="bx bx-comment"></i></span>
-                                        <textarea id="basic-icon-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?"
-                                            aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                        <span id="basic-icon-default-phone2" class="input-group-text"><i
+                                                class="bx bx-phone"></i></span>
+                                        <input type="number" id="basic-icon-default-phone" class="form-control phone-mask"
+                                            placeholder="08xxxxxx" aria-label="08xxxxxx"
+                                            aria-describedby="basic-icon-default-phone2" name="telepon" required />
                                     </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat</label>
+                                    <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Send</button>
                             </form>

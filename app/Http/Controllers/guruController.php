@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Mapel;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 
 class guruController extends Controller
@@ -83,12 +82,12 @@ class guruController extends Controller
     {
         try{
             Guru::findOrFail($id);
-            Guru::destroy($id); 
+            Guru::destroy($id);
 
             return back()->with('sukses', 'Data Berhasil Dihapus');
         }catch(\Exception $e) {
             return back()->with('gagal', 'Data Gagal Dihapus');
         }
     }
-    
+
 }
