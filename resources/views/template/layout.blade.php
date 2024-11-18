@@ -52,7 +52,7 @@
                 <div class="app-brand demo">
                     <span class="app-brand-text demo menu-text fw-bolder ms-2">SIAKAD</span>
 
-                    <a href="javascript:void(0);"
+                    <a href="{{ '/dashboard' }}"
                         class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
@@ -62,74 +62,65 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item">
+                    <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
                         <a href="{{ url('/dashboard') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-id-card"></i>
-                            <div data-i18n="Layouts">Manajemen Siswa</div>
+                    <li class="menu-item  {{ Request::is('student') ? 'active' : '' }}">
+                        <a href="{{ url('/student') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                            <div data-i18n="Without menu">Siswa</div>
                         </a>
-
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ url('/student') }}" class="menu-link">
-                                    <div data-i18n="Without menu">Siswa</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/class') }}" class="menu-link">
-                                    <div data-i18n="Without navbar">Kelas</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/parent') }}" class="menu-link">
-                                    <div data-i18n="Container">Orang Tua</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/extracurricular') }}" class="menu-link">
-                                    <div data-i18n="Container">Ekstrakurikuler</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/presence') }}" class="menu-link">
-                                    <div data-i18n="Container">Absen</div>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-id-card"></i>
-                            <div data-i18n="Layouts">Manajemen Guru</div>
+                    <li class="menu-item  {{ Request::is('class') ? 'active' : '' }}">
+                        <a href="{{ url('/class') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-group"></i>
+                            <div data-i18n="Without navbar">Kelas</div>
                         </a>
-                        
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ url('/teacher') }}" class="menu-link">
-                                    <div data-i18n="Without menu">Guru</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/journal') }}" class="menu-link">
-                                    <div data-i18n="Without navbar">Jurnal</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/subject') }}" class="menu-link">
-                                    <div data-i18n="Without navbar">Mapel</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('/grade') }}" class="menu-link">
-                                    <div data-i18n="Container">Input Nilai</div>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="menu-item  {{ Request::is('parent') ? 'active' : '' }}">
+                        <a href="{{ url('/parent') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-user-pin"></i>
+                            <div data-i18n="Container">Orang Tua</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::is('extracurricular') ? 'active' : '' }}">
+                        <a href="{{ url('/extracurricular') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-football"></i>
+                            <div data-i18n="Container">Ekstrakurikuler</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::is('presence') ? 'active' : '' }}">
+                        <a href="{{ url('/presence') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-calendar-check"></i>
+                            <div data-i18n="Container">Absen</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::is('teacher') ? 'active' : '' }}">
+                        <a href="{{ url('/teacher') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-briefcase"></i>
+                            <div data-i18n="Without menu">Guru</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::is('journal') ? 'active' : '' }}">
+                        <a href="{{ url('/journal') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-book-content"></i>
+                            <div data-i18n="Without navbar">Jurnal</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::is('subject') ? 'active' : '' }}">
+                        <a href="{{ url('/subject') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-book"></i>
+                            <div data-i18n="Without navbar">Mapel</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::is('grade') ? 'active' : '' }}">
+                        <a href="{{ url('/grade') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
+                            <div data-i18n="Container">Input Nilai</div>
+                        </a>
                     </li>
                 </ul>
             </aside>

@@ -14,8 +14,7 @@ class orangtuaController extends Controller
             $orangtuas = OrangTua::with('siswa')->get();
             return view('manajemen-orangtua.orangtua', compact('orangtuas'));
         } catch (\Exception $e) {
-            $message = $e->getMessage();
-            return back()->with('gagal', "Data Gagal Dimuat, {$message}");
+            return back()->with('gagal', "Data Gagal Dimuat😵");
         }
     }
 
@@ -25,7 +24,7 @@ class orangtuaController extends Controller
             $siswas = Siswa::all();
             return view('manajemen-orangtua.tambah-orangtua', ['hideNavbar' => true], compact('siswas'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Form Gagal Dimuat');
+            return back()->with('gagal', 'Form Gagal Dimuat😵');
         }
     }
 
@@ -40,14 +39,52 @@ class orangtuaController extends Controller
 
         try {
             OrangTua::create($validated);
-            return redirect('/parent')->with('sukses', 'Data Berhasil Ditambah!');
+            return redirect('/parent')->with('sukses', 'Data Berhasil Ditambah🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Ditambah!');
+            return back()->with('gagal', 'Data Gagal Ditambah😵');
         }
     }
 
-    public function editorangtua()
+    public function editorangtua($id)
     {
-        return view('manajemen-orangtua.edit-orangtua', ['hideNavbar' => true]);
+        $orangtua = OrangTua::find($id);
+
+        if (!$orangtua) {
+            return back()->with('gagal', 'Orang Tua Tidak Ditemukan😵');
+        }
+
+        $siswas = Siswa::all();
+        return view('manajemen-orangtua.edit-orangtua', ['hideNavbar' => true], compact('siswas', 'orangtua'));
+    }
+
+    public function updateparent(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',
+            'alamat' => 'required|string',
+            'siswa_id' => 'required|exists:siswas,id'
+        ]);
+
+        try {
+            $orangtua = OrangTua::findOrFail($id);
+            $orangtua->update($validated);
+
+            return redirect('/parent')->with('sukses', 'Data Berhasil Diedit🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Diedit😵');
+        }
+    }
+
+    public function deleteparent($id)
+    {
+        try {
+            OrangTua::findOrFail($id);
+            OrangTua::destroy($id);
+
+            return back()->with('sukses', 'Data Berhasil Dihapus🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Dihapus😵');
+        }
     }
 }

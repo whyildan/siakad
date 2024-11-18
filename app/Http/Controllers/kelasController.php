@@ -14,7 +14,7 @@ class kelasController extends Controller
             $kelas = Kelas::with('guru')->get();
             return view('manajemen-kelas.kelas', compact('kelas'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Tidak Dapat Dimuat');
+            return back()->with('gagal', 'Data Tidak Dapat Dimuat😵');
         }
     }
 
@@ -24,7 +24,7 @@ class kelasController extends Controller
             $gurus = Guru::all();
             return view('manajemen-kelas.tambah-kelas', ['hideNavbar' => true], compact('gurus'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Form Gagal Dimuat');
+            return back()->with('gagal', 'Form Gagal Dimuat😵');
         }
     }
 
@@ -36,9 +36,9 @@ class kelasController extends Controller
         ]);
         try {
             Kelas::create($validated);
-            return redirect('/class')->with('sukses', 'Data Berhasil Ditambah');
+            return redirect('/class')->with('sukses', 'Data Berhasil Ditambah🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Diubah');
+            return back()->with('gagal', 'Data Gagal Ditambah😵');
         }
     }
 
@@ -47,7 +47,7 @@ class kelasController extends Controller
         $kelas = Kelas::find($id);
 
         if (!$kelas) {
-            return back()->with('gagal', 'Kelas Tidak Ditemukan');
+            return back()->with('gagal', 'Kelas Tidak Ditemukan😵');
         }
 
         $gurus = Guru::all();
@@ -65,9 +65,9 @@ class kelasController extends Controller
             $kelas = Kelas::findOrFail($id);
             $kelas->update($validated);
 
-            return redirect('/class')->with('sukses', 'Data Berhasil Diedit');
+            return redirect('/class')->with('sukses', 'Data Berhasil Diedit🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Diedit');
+            return back()->with('gagal', 'Data Gagal Diedit😵');
         }
     }
 
@@ -77,9 +77,9 @@ class kelasController extends Controller
             Kelas::findOrFail($id);
             Kelas::destroy($id);
 
-            return back()->with('sukses', 'Data Berhasil Dihapus');
+            return back()->with('sukses', 'Data Berhasil Dihapus🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dihapus');
+            return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
     }
 }

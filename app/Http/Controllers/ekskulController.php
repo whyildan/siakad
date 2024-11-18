@@ -15,7 +15,7 @@ class ekskulController extends Controller
 
             return view('manajemen-ekskul.ekskul', compact('ekskuls'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dimuat');
+            return back()->with('gagal', 'Data Gagal Dimuat😵');
         }
     }
 
@@ -26,8 +26,7 @@ class ekskulController extends Controller
 
             return view('manajemen-ekskul.tambah-ekskul', ['hideNavbar' => true], compact('gurus'));
         } catch (\Exception $e) {
-            $message = $e->getMessage();
-            return back()->with('gagal', "Form Gagal Dimuat! {$message} ");
+            return back()->with('gagal', "Form Gagal Dimuat😵");
         }
     }
 
@@ -40,9 +39,9 @@ class ekskulController extends Controller
 
         try {
             Ekstrakurikuler::create($validated);
-            return redirect('/extracurricular')->with('sukses', 'Data Berhasil Ditambahkan');
+            return redirect('/extracurricular')->with('sukses', 'Data Berhasil Ditambahkan🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Ditambahkan');
+            return back()->with('gagal', 'Data Gagal Ditambahkan😵');
         }
     }
 
@@ -51,7 +50,7 @@ class ekskulController extends Controller
         $ekskul = Ekstrakurikuler::find($id);
 
         if (!$ekskul) {
-            return back()->with('gagal', 'Ekstrakurikuler Tidak Ditemukan');
+            return back()->with('gagal', 'Ekstrakurikuler Tidak Ditemukan😵');
         }
 
         $gurus = Guru::all();
@@ -69,9 +68,9 @@ class ekskulController extends Controller
             $ekskul = Ekstrakurikuler::findOrFail($id);
             $ekskul->update($validated);
 
-            return redirect('/extracurricular')->with('sukses', 'Data Berhasil Diedit');
+            return redirect('/extracurricular')->with('sukses', 'Data Berhasil Diedit🥳');
         } catch (\Exception $e) {
-            return Back()->with('gagal', "Data Gagal Diedit");
+            return Back()->with('gagal', "Data Gagal Diedit😵");
         }
     }
 
@@ -81,9 +80,9 @@ class ekskulController extends Controller
             Ekstrakurikuler::findOrFail($id);
             Ekstrakurikuler::destroy($id);
 
-            return back()->with('sukses', 'Data Berhasil Dihapus');
+            return back()->with('sukses', 'Data Berhasil Dihapus🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dihapus');
+            return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
     }
 }

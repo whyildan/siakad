@@ -26,8 +26,6 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="nama_mapel"></label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
                                         <input type="text" name="nama_mapel" class="form-control"
                                             id="nama_mapel basic-icon-default-fullname" placeholder="Masukkan Mapel"
                                             aria-label="Mapel" aria-describedby="basic-icon-default-fullname2"

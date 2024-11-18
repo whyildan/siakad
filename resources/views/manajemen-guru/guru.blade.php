@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-end">
                 <button type="button" class="btn btn-primary"><a href="{{ url('/addteacher') }}"
-                        class="text-white text-decoration-none">Tambah</a></button>
+                        class="text-white text-decoration-none"><i class='bx bx-plus-circle me-1'></i>Tambah</a></button>
             </div>
             <div class="table-responsive text-nowrap">
                 <table class="table table-striped">
@@ -41,8 +41,8 @@
                                 <td>{{ $guru->alamat }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-warning"><a
-                                            class="text-white text-decoration-none" href="{{ url("/editteacher/$guru->id") }}"><i
-                                                class="bx bx-edit-alt me-1"></i>
+                                            class="text-white text-decoration-none"
+                                            href="{{ url("/editteacher/$guru->id") }}"><i class="bx bx-edit-alt me-1"></i>
                                             Edit</a></button>
                                     <button type="button" class="btn btn-sm btn-danger"><a
                                             class="text-white text-decoration-none"

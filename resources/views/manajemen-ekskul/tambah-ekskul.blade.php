@@ -27,8 +27,6 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-fullname">Nama Ekstrakurikuler</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
                                         <input type="text" class="form-control" id="basic-icon-default-fullname"
                                             placeholder="Masukkan Nama Ekskul" aria-label="Ekstrakurikuler"
                                             aria-describedby="basic-icon-default-fullname2" name="nama_ekstrakurikuler"

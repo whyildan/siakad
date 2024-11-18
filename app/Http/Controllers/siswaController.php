@@ -14,7 +14,7 @@ class siswaController extends Controller
             $siswas = Siswa::with('kelas')->get();
             return view('manajemen-siswa.siswa', compact('siswas'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dimuat');
+            return back()->with('gagal', 'Data Gagal Dimuat😵');
         }
     }
 
@@ -24,7 +24,7 @@ class siswaController extends Controller
             $kelas = Kelas::all();
             return view('manajemen-siswa.tambah-siswa', ['hideNavbar' => true], compact('kelas'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Form Gagal Dimuat');
+            return back()->with('gagal', 'Form Gagal Dimuat😵');
         }
     }
 
@@ -40,10 +40,9 @@ class siswaController extends Controller
 
         try {
             Siswa::create($validated);
-            return redirect('/student')->with('sukses', 'Data Berhasil Ditambahkan');
+            return redirect('/student')->with('sukses', 'Data Berhasil Ditambahkan🥳');
         } catch (\Exception $e) {
-            $message = $e->getMessage();
-            return back()->with('gagal', "Data Gagal Ditambahkan, {$message}");
+            return back()->with('gagal', "Data Gagal Ditambahkan😵");
         }
     }
 
@@ -52,7 +51,7 @@ class siswaController extends Controller
         $siswa = Siswa::find($id);
 
         if (!$siswa) {
-            return back()->with('gagal', 'Siswa Tidak Ditemukan');
+            return back()->with('gagal', 'Siswa Tidak Ditemukan😵');
         }
 
         $kelas = Kelas::all();
@@ -73,9 +72,9 @@ class siswaController extends Controller
             $siswa = Siswa::findOrFail($id);
             $siswa->update($validated);
 
-            return redirect('/student')->with('sukses', 'Data Berhasil Diedit');
+            return redirect('/student')->with('sukses', 'Data Berhasil Diedit🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', "Data Gagal Diedit");
+            return back()->with('gagal', "Data Gagal Diedit😵");
         }
     }
 
@@ -85,9 +84,9 @@ class siswaController extends Controller
             Siswa::findOrFail($id);
             Siswa::destroy($id);
 
-            return back()->with('sukses', 'Data Berhasil Dihapus');
+            return back()->with('sukses', 'Data Berhasil Dihapus🥳');
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dihapus');
+            return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
     }
 }

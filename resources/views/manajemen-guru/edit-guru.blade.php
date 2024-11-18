@@ -28,8 +28,6 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="nama">Nama</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
                                         <input type="text" name="nama" class="form-control"
                                             id="basic-icon-default-fullname" placeholder="Masukkan Nama" aria-label="Nama"
                                             aria-describedby="basic-icon-default-fullname2" value="{{ $guru->nama }}"
@@ -50,8 +48,6 @@
                                 <div class="mb-3">
                                     <label class="form-label" for=telepon">Telepon</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
                                         <input type="number" name="telepon" class="form-control"
                                             id="basic-icon-default-fullname" placeholder="08xxxxxx" aria-label="Telepon"
                                             aria-describedby="basic-icon-default-fullname2" value="{{ $guru->telepon }}"

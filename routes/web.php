@@ -59,6 +59,8 @@ Route::get('/parent', [orangtuaController::class, 'dataorangtua']);
 Route::get('/addparent', [orangtuaController::class, 'tambahorangtua']);
 Route::post('/createparent', [orangtuaController::class, 'createparent']);
 Route::get('/editparent/{id}', [orangtuaController::class, 'editorangtua']);
+Route::post('/updateparent/{id}', [orangtuaController::class, 'updateparent']);
+Route::get('/deleteparent/{id}', [orangtuaController::class, 'deleteparent']);
 
 Route::get('/extracurricular', [ekskulController::class, 'dataekskul']);
 Route::get('/addextracurricular', [ekskulController::class, 'tambahekskul']);

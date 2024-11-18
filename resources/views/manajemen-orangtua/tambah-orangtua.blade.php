@@ -27,8 +27,6 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
                                         <input type="text" class="form-control" id="basic-icon-default-fullname"
                                             placeholder="Masukkan Nama" aria-label="Nama"
                                             aria-describedby="basic-icon-default-fullname2" name="nama" required />
@@ -37,8 +35,6 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-company">Telepon</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-company2" class="input-group-text"><i
-                                                class="bx bx-buildings"></i></span>
                                         <input type="number" id="basic-icon-default-company" class="form-control"
                                             placeholder="08xxxxxxxx" aria-label="telepon"
                                             aria-describedby="basic-icon-default-company2" name="telepon" required />
@@ -49,7 +45,7 @@
                                     <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="siswa_id" class="form-label">Nama Anak</label>
+                                    <label for="siswa_id" class="form-label">Nama Siswa</label>
                                     <select id="siswa_id" name="siswa_id" class="form-select" required>
                                         <option>Pilih Siswa</option>
                                         @foreach ($siswas as $siswa)

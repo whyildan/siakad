@@ -10,23 +10,22 @@ class guruController extends Controller
 {
     public function dataguru()
     {
-        try{
+        try {
 
             $gurus = Guru::with('mapel')->get();
             return view('manajemen-guru.guru', compact('gurus'));
-
-        }catch(\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dimuat!');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Dimuat😵');
         }
     }
 
     public function tambahguru()
     {
-        try{
+        try {
             $mapels = Mapel::all();
             return view('manajemen-guru.tambah-guru', ['hideNavbar' => true], compact('mapels'));
-        }catch(\Exception $e) {
-            return back()->with('gagal', 'Form Gagal Dimuat!');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Form Gagal Dimuat😵');
         }
     }
 
@@ -34,16 +33,16 @@ class guruController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string',
-            'mapel_id'=> 'required|exists:mapels,id',
+            'mapel_id' => 'required|exists:mapels,id',
             'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',
             'alamat' => 'required|string'
         ]);
 
-        try{
+        try {
             Guru::create($validated);
-            return redirect('/teacher')->with('sukses', 'Data Berhasil Ditambah!');
-        }catch(\Exception $e){
-            return back()->with('gagal', 'Data Gagal Ditambah!');
+            return redirect('/teacher')->with('sukses', 'Data Berhasil Ditambah🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Ditambah😵');
         }
     }
 
@@ -51,8 +50,8 @@ class guruController extends Controller
     {
         $guru = Guru::find($id);
 
-        if(!$guru) {
-            return back()->with('gagal', 'Guru Tidak Ditemukan!');
+        if (!$guru) {
+            return back()->with('gagal', 'Guru Tidak Ditemukan😵');
         }
 
         $mapels = Mapel::all();
@@ -63,31 +62,30 @@ class guruController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string',
-            'mapel_id'=> 'required|exists:mapels,id',
+            'mapel_id' => 'required|exists:mapels,id',
             'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',
             'alamat' => 'required|string'
         ]);
 
-        try{
+        try {
             $guru = Guru::findOrFail($id);
             $guru->update($validated);
 
-            return redirect('/teacher')->with('sukses', 'Data Sukses Diedit!');
-        }catch(\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Diedit');
+            return redirect('/teacher')->with('sukses', 'Data Sukses Diedit🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Diedit😵');
         }
     }
 
     public function hapusguru($id)
     {
-        try{
+        try {
             Guru::findOrFail($id);
             Guru::destroy($id);
 
-            return back()->with('sukses', 'Data Berhasil Dihapus');
-        }catch(\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dihapus');
+            return back()->with('sukses', 'Data Berhasil Dihapus🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
     }
-
 }
