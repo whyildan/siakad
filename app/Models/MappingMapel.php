@@ -19,4 +19,14 @@ class MappingMapel extends Model
 
     protected $hidden;
 
+    public function kelas() 
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class);
+    }
+
 }

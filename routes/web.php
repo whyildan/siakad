@@ -11,6 +11,7 @@ use App\Http\Controllers\jurnalController;
 use App\Http\Controllers\mapelController;
 use App\Http\Controllers\orangtuaController;
 use App\Http\Controllers\inputnilaiController;
+use App\Http\Controllers\mappingMapelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -54,6 +55,13 @@ Route::post('/storesubject', [mapelController::class, 'storesubject']);
 Route::get('/editsubject/{id}', [mapelController::class, 'editmapel']);
 Route::post('/updatesubject/{id}', [mapelController::class, 'updatesubject']);
 Route::get('/deletesubject/{id}', [mapelController::class, 'hapusmapel']);
+
+Route::get('/mapping/subject', [mappingMapelController::class, 'mappingmapel']);
+Route::get('/addmapping/subject', [mappingMapelController::class, 'tambahmapping']);
+Route::post('/createmapping/subject', [mappingMapelController::class, 'createmapping']);
+Route::get('/editmapping/subject/{id}', [mappingMapelController::class, 'editmapping']);
+Route::post('/updatemapping/subject/{id}', [mappingMapelController::class, 'updatemapping']);
+Route::get('/deletemapping/subject/{id}', [mappingMapelController::class, 'deletemapping']);
 
 Route::get('/parent', [orangtuaController::class, 'dataorangtua']);
 Route::get('/addparent', [orangtuaController::class, 'tambahorangtua']);

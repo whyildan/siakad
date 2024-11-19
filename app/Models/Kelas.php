@@ -27,4 +27,10 @@ class Kelas extends Model
     {
         return $this->hasMany(Siswa::class, 'kelas_id');
     }
+
+    public function mappingMapel()
+    {
+        return $this->hasMany(MappingMapel::class, 'kelas_id');
+    }
+
 }

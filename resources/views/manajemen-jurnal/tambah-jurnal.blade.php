@@ -18,13 +18,11 @@
                         <div class="card-body">
                             <form>
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-fullname">Kelas</label>
+                                    <label class="form-label" for="basic-icon-default-fullname">Jurnal</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
                                         <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                            placeholder="Masukkan Kelas" aria-label="Kelas"
-                                            aria-describedby="basic-icon-default-fullname2" />
+                                            placeholder="Nama Jurnal" aria-label="Jurnal"
+                                            aria-describedby="basic-icon-default-fullname2" required/>
                                     </div>
                                 </div>
                                 <div class="mb-3">

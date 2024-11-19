@@ -15,10 +15,16 @@ class Mapel extends Model
         'nama_mapel'
     ];
 
+    protected $hidden;
+
     public function gurus()
     {
         return $this->hasMany(Guru::class, 'mapel_id');
     }
 
-    protected $hidden;
+    public function mappingMapel()
+    {
+        return $this->hasMany(MappingMapel::class, 'mapel_id');
+    }
+
 }

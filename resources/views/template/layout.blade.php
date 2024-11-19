@@ -122,6 +122,12 @@
                             <div data-i18n="Container">Input Nilai</div>
                         </a>
                     </li>
+                    <li class="menu-item {{ Request::is('mapping/mapel') ? 'active' : '' }}">
+                        <a href="{{ url('/mapping/subject') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
+                            <div data-i18n="Container">Mapping Mapel</div>
+                        </a>
+                    </li>
                 </ul>
             </aside>
             <!-- / Menu -->
