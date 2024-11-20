@@ -16,7 +16,7 @@ class mappingMapelController extends Controller
 
             return view('manajemen-mapping-mapel.mapping-mapel', compact('mappings'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Dimuat');
+            return back()->with('gagal', 'Data Gagal Dimuat😵');
         }
     }
 
@@ -28,7 +28,7 @@ class mappingMapelController extends Controller
 
             return view('manajemen-mapping-mapel.tambah-mapping-mapel', ['hideNavbar' => true], compact('kelas', 'mapels'));
         } catch (\Exception $e) {
-            return back()->with('gagal', 'Form Gagal Dimuat');
+            return back()->with('gagal', 'Form Gagal Dimuat😵');
         }
     }
 
@@ -39,11 +39,11 @@ class mappingMapelController extends Controller
             'mapel_id' => 'required|exists:mapels,id'
         ]);
 
-        try{
+        try {
             MappingMapel::create($validated);
-            return redirect('/mapping/subject')->with('sukses', 'Data Berhasil Ditambah');
-        }catch(\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Ditambah');
+            return redirect('/mapping/subject')->with('sukses', 'Data Berhasil Ditambah🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Ditambah😵');
         }
     }
 
@@ -51,8 +51,8 @@ class mappingMapelController extends Controller
     {
         $mapping = MappingMapel::find($id);
 
-        if(!$mapping) {
-            return back()->with('gagal', 'Data Tidak Ditemukan');
+        if (!$mapping) {
+            return back()->with('gagal', 'Mapping Mapel Tidak Ditemukan😵');
         }
 
         $kelas = Kelas::all();
@@ -67,26 +67,25 @@ class mappingMapelController extends Controller
             'mapel_id' => 'required|exists:mapels,id'
         ]);
 
-        try{
+        try {
             $mapping = MappingMapel::findOrFail($id);
             $mapping->update($validated);
 
-            return redirect('/mapping/subject')->with('sukses', 'Data Berhasil Diedit');
-        }catch(\Exception $e) {
-            return back()->with('gagal', 'Data Gagal Diedit');
+            return redirect('/mapping/subject')->with('sukses', 'Data Berhasil Diedit🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Diedit😵');
         }
     }
 
     public function deletemapping($id)
     {
-        try{
+        try {
             MappingMapel::findOrFail($id);
             MappingMapel::destroy($id);
 
-            return back()->with('sukses', 'Data Berhasil Dihapus');
-        }catch(\Exception $e){
-            return back()->with('gagal', 'Data Gagal Dihapus');
+            return back()->with('sukses', 'Data Berhasil Dihapus🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
     }
-
 }

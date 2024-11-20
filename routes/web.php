@@ -47,6 +47,7 @@ Route::get('/deleteteacher/{id}', [guruController::class, 'hapusguru']);
 
 Route::get('/journal', [jurnalController::class, 'datajurnal']);
 Route::get('/addjournal', [jurnalController::class, 'tambahjurnal']);
+Route::post('/createjournal', [jurnalController::class, 'createjournal']);
 Route::get('/editjournal', [jurnalController::class, 'editjurnal']);
 
 Route::get('/subject', [mapelController::class, 'datamapel']);

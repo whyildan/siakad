@@ -19,7 +19,7 @@ class MappingMapel extends Model
 
     protected $hidden;
 
-    public function kelas() 
+    public function kelas()
     {
         return $this->belongsTo(Kelas::class);
     }
@@ -29,4 +29,8 @@ class MappingMapel extends Model
         return $this->belongsTo(Mapel::class);
     }
 
+    public function jurnals()
+    {
+        return $this->hasMany(Jurnal::class, 'mapping_mapel_id');
+    }
 }

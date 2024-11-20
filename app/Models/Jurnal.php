@@ -18,4 +18,9 @@ class Jurnal extends Model
     ];
 
     protected $hidden;
+
+    public function mappingmapel()
+    {
+        return $this->belongsTo(MappingMapel::class);
+    }
 }
