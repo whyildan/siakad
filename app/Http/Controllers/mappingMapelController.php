@@ -12,7 +12,7 @@ class mappingMapelController extends Controller
     public function mappingmapel()
     {
         try {
-            $mappings = MappingMapel::with('kelas')->get();
+            $mappings = MappingMapel::with('kelas', 'mapel')->get();
 
             return view('manajemen-mapping-mapel.mapping-mapel', compact('mappings'));
         } catch (\Exception $e) {

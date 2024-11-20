@@ -11,7 +11,7 @@ class jurnalController extends Controller
     public function datajurnal()
     {
         try {
-            $journals = Jurnal::with('mappingmapel')->get();
+            $journals = Jurnal::with('mappingmapel.kelas', 'mappingmapel.mapel')->get();
 
             return view('manajemen-jurnal.jurnal', compact('journals'));
         } catch (\Exception $e) {
@@ -46,9 +46,28 @@ class jurnalController extends Controller
         }
     }
 
-    public function editjurnal()
+    public function editjurnal($id)
     {
-        return view('manajemen-jurnal.edit-jurnal', ['hideNavbar' => true]);
+        $jurnal = Jurnal::with('mappingmapel.kelas', 'mappingmapel.mapel')->findOrFail($id);
+        $mappings = MappingMapel::with('kelas', 'mapel')->get();
+        return view('manajemen-jurnal.edit-jurnal', ['hideNavbar' => true], compact('mappings', 'jurnal'));
+    }
+
+    public function updatejournal(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'mapping_mapel_id' => 'required|exists:mapping_mapels,id',
+            'tanggal' => 'required|date',
+            'deskripsi' => 'required|string'
+        ]);
+
+        try {
+            $jurnal = Jurnal::findOrFail($id);
+            $jurnal->update($validated);
+            return redirect('/journal')->with('sukses', 'Data Berhasil Diedit🥳');
+        } catch (\Exception $e) {
+            return back()->with('gagal', 'Data Gagal Diedit😵');
+        }
     }
 
     public function deletejournal($id)
@@ -58,7 +77,7 @@ class jurnalController extends Controller
             Jurnal::destroy($id);
 
             return back()->with('sukses', 'Data Berhasil Dihapus🥳');
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
     }

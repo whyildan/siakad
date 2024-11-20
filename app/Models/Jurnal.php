@@ -21,6 +21,6 @@ class Jurnal extends Model
 
     public function mappingmapel()
     {
-        return $this->belongsTo(MappingMapel::class);
+        return $this->belongsTo(MappingMapel::class, 'mapping_mapel_id');
     }
 }

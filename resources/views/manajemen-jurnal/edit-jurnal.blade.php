@@ -5,7 +5,13 @@
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4">Edit Data Journal</h4>
+            @if (Session::has('gagal'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Error!</strong> {{ Session::get('gagal') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            <h4 class="fw-bold py-3 mb-4">Edit Data Jurnal</h4>
 
             <!-- Basic Layout -->
             <div class="row">
@@ -16,26 +22,30 @@
                                     class="text-white text-decoration-none">Kembali</a></button>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="{{ url("/updatejournal/$jurnal->id") }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-fullname">Kelas</label>
+                                    <label for="mapping_mapel_id" class="form-label">Mapping Mapel</label>
+                                    <select id="mapping_mapel_id" name="mapping_mapel_id" class="form-select" required>
+                                        <option disabled>Pilih Mapping</option>
+                                        @foreach ($mappings as $mapping)
+                                            <option value="{{ $mapping->id }}" {{$jurnal->mapping_mapel_id == $mapping->id ? 'selected' : ''}}>{{ $mapping->kelas->nama_kelas }} ~
+                                                {{ $mapping->mapel->nama_mapel }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-icon-default-phone">Tanggal</label>
                                     <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="bx bx-user"></i></span>
-                                        <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                            placeholder="Masukkan Kelas" aria-label="Kelas"
-                                            aria-describedby="basic-icon-default-fullname2" />
+                                        <input type="date" id="basic-icon-default-date" class="form-control date-mask"
+                                            placeholder="xx/xx/xxxx" aria-label="xx/xx/xxxx"
+                                            aria-describedby="basic-icon-default-phone2" name="tanggal" value="{{$jurnal->tanggal}}" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-icon-default-company">Jurusan</label>
-                                    <div class="input-group input-group-merge">
-                                        <span id="basic-icon-default-company2" class="input-group-text"><i
-                                                class="bx bx-buildings"></i></span>
-                                        <input type="text" id="basic-icon-default-company" class="form-control"
-                                            placeholder="Masukkan Jurusan" aria-label="jurusan"
-                                            aria-describedby="basic-icon-default-company2" />
-                                    </div>
+                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required>{{ $jurnal->deskripsi }}</textarea>
                                 </div>
                                 <button type="submit" class="btn btn-warning">Send</button>
                             </form>

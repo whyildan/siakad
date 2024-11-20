@@ -34,8 +34,8 @@
                         @forelse ($journals as $journal)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $journal->mapping_mapel_id }} ~
-                                    {{ $journal->mapping_mapel_id }}</td>
+                                <td>{{ $journal->mappingmapel->kelas->nama_kelas }} ~
+                                    {{ $journal->mappingmapel->mapel->nama_mapel }}</td>
                                 <td>{{ $journal->tanggal }}</td>
                                 <td>{{ $journal->deskripsi }}</td>
                                 <td>
