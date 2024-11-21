@@ -13,6 +13,7 @@ class Siswa extends Model
 
     protected $fillable = [
         'nama',
+        'nis',
         'kelas_id',
         'tanggal_lahir',
         'telepon',
@@ -29,5 +30,10 @@ class Siswa extends Model
     public function orangtua()
     {
         return $this->hasOne(OrangTua::class);
+    }
+
+    public function absensis()
+    {
+        return $this->hasMany(JurnalAbsensi::class, 'siswa_id');
     }
 }

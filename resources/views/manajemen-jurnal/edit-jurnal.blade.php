@@ -22,14 +22,17 @@
                                     class="text-white text-decoration-none">Kembali</a></button>
                         </div>
                         <div class="card-body">
-                            <form action="{{ url("/updatejournal/$jurnal->id") }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url("/updatejournal/$jurnal->id") }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="mapping_mapel_id" class="form-label">Mapping Mapel</label>
+                                    <label for="mapping_mapel_id" class="form-label">Jurnal</label>
                                     <select id="mapping_mapel_id" name="mapping_mapel_id" class="form-select" required>
-                                        <option disabled>Pilih Mapping</option>
+                                        <option disabled>Pilih Jurnal</option>
                                         @foreach ($mappings as $mapping)
-                                            <option value="{{ $mapping->id }}" {{$jurnal->mapping_mapel_id == $mapping->id ? 'selected' : ''}}>{{ $mapping->kelas->nama_kelas }} ~
+                                            <option value="{{ $mapping->id }}"
+                                                {{ $jurnal->mapping_mapel_id == $mapping->id ? 'selected' : '' }}>
+                                                {{ $mapping->kelas->nama_kelas }} ~
                                                 {{ $mapping->mapel->nama_mapel }}
                                             </option>
                                         @endforeach
@@ -40,7 +43,8 @@
                                     <div class="input-group input-group-merge">
                                         <input type="date" id="basic-icon-default-date" class="form-control date-mask"
                                             placeholder="xx/xx/xxxx" aria-label="xx/xx/xxxx"
-                                            aria-describedby="basic-icon-default-phone2" name="tanggal" value="{{$jurnal->tanggal}}" required />
+                                            aria-describedby="basic-icon-default-phone2" name="tanggal"
+                                            value="{{ $jurnal->tanggal }}" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">

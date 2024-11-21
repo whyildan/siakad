@@ -92,12 +92,6 @@
                             <div data-i18n="Container">Ekstrakurikuler</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ Request::is('presence') ? 'active' : '' }}">
-                        <a href="{{ url('/presence') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-calendar-check"></i>
-                            <div data-i18n="Container">Absen</div>
-                        </a>
-                    </li>
                     <li class="menu-item {{ Request::is('teacher') ? 'active' : '' }}">
                         <a href="{{ url('/teacher') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-briefcase"></i>

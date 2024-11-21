@@ -25,9 +25,9 @@
                             <form action="{{ url('/createjournal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="mapping_mapel_id" class="form-label">Mapping Mapel</label>
+                                    <label for="mapping_mapel_id" class="form-label">Jurnal</label>
                                     <select id="mapping_mapel_id" name="mapping_mapel_id" class="form-select" required>
-                                        <option>Pilih Mapping</option>
+                                        <option>Pilih Jurnal</option>
                                         @foreach ($mappings as $mapping)
                                             <option value="{{ $mapping->id }}">{{ $mapping->kelas->nama_kelas }} ~
                                                 {{ $mapping->mapel->nama_mapel }}

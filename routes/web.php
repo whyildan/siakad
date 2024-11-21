@@ -45,12 +45,6 @@ Route::get('/editteacher/{id}', [guruController::class, 'editguru']);
 Route::post('/updateteacher/{id}', [guruController::class, 'updateteacher']);
 Route::get('/deleteteacher/{id}', [guruController::class, 'hapusguru']);
 
-Route::get('/journal', [jurnalController::class, 'datajurnal']);
-Route::get('/addjournal', [jurnalController::class, 'tambahjurnal']);
-Route::post('/createjournal', [jurnalController::class, 'createjournal']);
-Route::get('/editjournal/{id}', [jurnalController::class, 'editjurnal']);
-Route::post('/updatejournal/{id}', [jurnalController::class, 'updatejournal']);
-Route::get('/deletejournal/{id}', [jurnalController::class, 'deletejournal']);
 
 Route::get('/subject', [mapelController::class, 'datamapel']);
 Route::get('/addsubject', [mapelController::class, 'tambahmapel']);
@@ -80,9 +74,17 @@ Route::get('/editextracurricular/{id}', [ekskulController::class, 'editekskul'])
 Route::post('/updateextracurricular/{id}', [ekskulController::class, 'updateextra']);
 Route::get('/deleteextracurricular/{id}', [ekskulController::class, 'deleteextra']);
 
-Route::get('/presence', [absenController::class, 'dataabsen']);
+Route::get('/journal', [jurnalController::class, 'datajurnal']);
+Route::get('/addjournal', [jurnalController::class, 'tambahjurnal']);
+Route::post('/createjournal', [jurnalController::class, 'createjournal']);
+Route::get('/editjournal/{id}', [jurnalController::class, 'editjurnal']);
+Route::post('/updatejournal/{id}', [jurnalController::class, 'updatejournal']);
+Route::get('/deletejournal/{id}', [jurnalController::class, 'deletejournal']);
+
+Route::get('/journal/presence/{id}', [absenController::class, 'dataabsen']);
 Route::get('/addpresence', [absenController::class, 'tambahabsen']);
 Route::get('/editpresence', [absenController::class, 'editabsen']);
+
 
 Route::get('/grade', [inputnilaiController::class, 'datanilai']);
 Route::get('/addgrade', [inputnilaiController::class, 'tambahnilai']);

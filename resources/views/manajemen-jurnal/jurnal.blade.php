@@ -18,13 +18,16 @@
             <div class="card-header d-flex justify-content-end">
                 <button type="button" class="btn btn-primary"><a href="{{ url('/addjournal') }}"
                         class="text-white text-decoration-none"><i class='bx bx-plus-circle me-1'></i>Tambah</a></button>
+                <button type="button" class="btn btn-success mx-1"><a href="{{ url('/presence/') }}"
+                        class="text-white text-decoration-none"><i
+                            class='bx bx-calendar-check me-1'></i>Presensi</a></button>
             </div>
             <div class="table-responsive text-nowrap">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Mapping Mapel</th>
+                            <th>Jurnal</th>
                             <th>Tanggal</th>
                             <th>Deskripsi</th>
                             <th>Action</th>
@@ -46,7 +49,8 @@
                                             Edit</a></button>
                                     <button type="button" class="btn btn-sm btn-danger"><a
                                             class="text-white text-decoration-none"
-                                            href="{{ url("/deletejournal/$journal->id") }}"><i class="bx bx-trash me-1"></i>
+                                            href="{{ url("/deletejournal/$journal->id") }}"><i
+                                                class="bx bx-trash me-1"></i>
                                             Delete</a></button>
                                 </td>
                             </tr>

@@ -23,4 +23,9 @@ class Jurnal extends Model
     {
         return $this->belongsTo(MappingMapel::class, 'mapping_mapel_id');
     }
+
+    public function absensis()
+    {
+        return $this->hasMany(JurnalAbsensi::class, 'jurnal_id');
+    }
 }

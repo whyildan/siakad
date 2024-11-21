@@ -18,4 +18,14 @@ class JurnalAbsensi extends Model
     ];
 
     protected $hidden;
+
+    public function jurnal()
+    {
+        return $this->belongsTo(Jurnal::class, 'jurnal_id');
+    }
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'siswa_id');
+    }
 }
