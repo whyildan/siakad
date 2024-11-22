@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [authController::class, 'login']);
+Route::post('/login/auth', [authController::class, 'authenticate']);
+Route::get('/logout', [authController::class, 'logout']);
 Route::get('/forgot_password', [authController::class, 'forgotpass']);
 Route::get('/register', [authController::class, 'register']);
 

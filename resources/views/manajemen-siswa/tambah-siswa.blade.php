@@ -33,6 +33,14 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">NIS</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="number" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="NIS" aria-label="NIS"
+                                            aria-describedby="basic-icon-default-fullname2" name="nis" required />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label for="kelas_id" class="form-label">Kelas</label>
                                     <select id="kelas_id" name="kelas_id" class="form-select" required>
                                         <option>Pilih Kelas</option>

@@ -25,6 +25,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>NIS</th>
                             <th>Kelas</th>
                             <th>Tanggal Lahir</th>
                             <th>Telepon</th>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $siswa->nama }}</td>
+                                <td>{{ $siswa->nis }}</td>
                                 <td>{{ $siswa->kelas->nama_kelas }}</td>
                                 <td>{{ $siswa->tanggal_lahir }}</td>
                                 <td>{{ $siswa->telepon }}</td>
@@ -54,7 +56,7 @@
                             </tr>
                         @empty
                             <tr class="text-center">
-                                <td colspan="7"><i>Tidak Ada Data Tersedia</i></td>
+                                <td colspan="8"><i>Tidak Ada Data Tersedia</i></td>
                             </tr>
                         @endforelse
                     </tbody>

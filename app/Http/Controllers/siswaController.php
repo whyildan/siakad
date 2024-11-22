@@ -32,6 +32,7 @@ class siswaController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string',
+            'nis' => 'required|string|max:16',
             'kelas_id' => 'required|exists:kelas,id',
             'tanggal_lahir' => 'required|date',
             'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',
@@ -62,6 +63,7 @@ class siswaController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string',
+            'nis' => 'required|string|max:16',
             'kelas_id' => 'required|exists:kelas,id',
             'tanggal_lahir' => 'required|date',
             'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',

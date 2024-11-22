@@ -1,6 +1,21 @@
 @extends('template.layout')
 
 @section('content-page')
+    <div class="modal fade" id="loginSuccessModal" data-bs-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <i class="bx bx-check-circle" style="font-size: 5rem; color: green;"></i>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Selamat datang! Anda berhasil login.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -39,4 +54,16 @@
     <!-- / Content -->
     </div>
     <!-- Content wrapper -->
+@endsection
+
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tampilkan modal jika ada session login_error
+            @if (session('login_success'))
+                var errorModal = new bootstrap.Modal(document.getElementById('loginSuccessModal'));
+                errorModal.show();
+            @endif
+        });
+    </script>
 @endsection
