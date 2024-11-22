@@ -13,7 +13,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <h4 class="fw-bold py-3 mb-4">Manajemen Data Kelas</h4>
+        <div class="d-flex align-items-center justify-content-between">
+            <h4 class="fw-bold py-3 mb-4">Manajemen Data Kelas</h4>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="javascript:void(0);">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="javascript:void(0);">Library</a>
+                    </li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+            </nav>
+        </div>
         <div class="card">
             <div class="card-header d-flex justify-content-end">
                 <button type="button" class="btn btn-primary"><a href="{{ url('/addclass') }}"

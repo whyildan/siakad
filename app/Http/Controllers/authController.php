@@ -29,12 +29,7 @@ class authController extends Controller
 
         return back()->with('login_error', true);
     }
-
-    public function forgotpass()
-    {
-        return view('auth.forgot-password');
-    }
-
+    
     public function register()
     {
         return view('auth.register');

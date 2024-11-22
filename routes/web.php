@@ -12,6 +12,7 @@ use App\Http\Controllers\mapelController;
 use App\Http\Controllers\orangtuaController;
 use App\Http\Controllers\inputnilaiController;
 use App\Http\Controllers\mappingMapelController;
+use App\Http\Controllers\resetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,8 +22,10 @@ Route::get('/', function () {
 Route::get('/login', [authController::class, 'login']);
 Route::post('/login/auth', [authController::class, 'authenticate']);
 Route::get('/logout', [authController::class, 'logout']);
-Route::get('/forgot_password', [authController::class, 'forgotpass']);
 Route::get('/register', [authController::class, 'register']);
+
+Route::get('/forgot_password', [resetPasswordController::class, 'resetpassword']);
+Route::post('/forgot_password', [resetPasswordController::class, 'sendResetLink']);
 
 Route::get('/dashboard', [homeController::class, 'dashboard']);
 
