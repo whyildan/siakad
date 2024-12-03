@@ -81,16 +81,8 @@
                                 <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
                             </div>
                         </form>
-
-                        <p class="text-center">
-                            <span>Belum punya akun?</span>
-                            <a href="{{ url('/register') }}">
-                                <span>Buat Akun</span>
-                            </a>
-                        </p>
                     </div>
                 </div>
-                <!-- /Register -->
             </div>
         </div>
     </div>

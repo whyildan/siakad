@@ -68,6 +68,12 @@
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
+                    <li class="menu-item  {{ Request::is('user') ? 'active' : '' }}">
+                        <a href="{{ url('/user') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-user"></i>
+                            <div data-i18n="Without menu">User</div>
+                        </a>
+                    </li>
                     <li class="menu-item  {{ Request::is('student') ? 'active' : '' }}">
                         <a href="{{ url('/student') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-circle"></i>

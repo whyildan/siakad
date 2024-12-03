@@ -13,11 +13,9 @@ use App\Http\Controllers\orangtuaController;
 use App\Http\Controllers\inputnilaiController;
 use App\Http\Controllers\mappingMapelController;
 use App\Http\Controllers\resetPasswordController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/login', [authController::class, 'login']);
 Route::post('/login/auth', [authController::class, 'authenticate']);
@@ -28,6 +26,13 @@ Route::get('/forgot_password', [resetPasswordController::class, 'resetpassword']
 Route::post('/forgot_password', [resetPasswordController::class, 'sendResetLink']);
 
 Route::get('/dashboard', [homeController::class, 'dashboard']);
+
+Route::get('/user', [userController::class, 'datauser']);
+Route::get('/adduser', [userController::class, 'tambahuser']);
+Route::post('/createuser', action: [userController::class, 'createuser']);
+Route::get('/edituser/{id}', [userController::class, 'edituser']);
+Route::post('/updateuser/{id}', [userController::class, 'updateuser']);
+Route::get('/deleteuser/{id}', [userController::class, 'deleteuser']);
 
 Route::get('/student', [siswaController::class, 'datasiswa']);
 Route::get('/addstudent', [siswaController::class, 'tambahsiswa']);
