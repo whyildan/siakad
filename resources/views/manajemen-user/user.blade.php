@@ -36,7 +36,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->role }}</td>
+                                <td><span class="badge bg-label-primary me-1">{{ $user->role }}</span></td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-warning"><a
                                             class="text-white text-decoration-none"

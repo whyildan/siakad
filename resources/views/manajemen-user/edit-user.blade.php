@@ -25,11 +25,22 @@
                             <form action="{{ url("/updateuser/$user->id") }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload Profile</label>
+                                    <input class="form-control" type="file" id="formFile" name="image" />
+                                    @if ($user->image)
+                                        <div class="mt-2">
+                                            <img src="{{ asset($user->image) }}" alt="Foto Profil"
+                                                style="max-width: 200px; max-height: 200px;">
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                                     <div class="input-group input-group-merge">
                                         <input type="text" class="form-control" id="basic-icon-default-fullname"
                                             placeholder="Nama" aria-label="Nama"
-                                            aria-describedby="basic-icon-default-fullname2" name="name" value="{{ $user->name }}" required />
+                                            aria-describedby="basic-icon-default-fullname2" name="name"
+                                            value="{{ $user->name }}" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -37,7 +48,8 @@
                                     <div class="input-group input-group-merge">
                                         <input type="email" class="form-control" id="basic-icon-default-fullname"
                                             placeholder="email@email.com" aria-label="email"
-                                            aria-describedby="basic-icon-default-fullname2" name="email" value="{{ $user->email }}" required />
+                                            aria-describedby="basic-icon-default-fullname2" name="email"
+                                            value="{{ $user->email }}" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -54,7 +66,8 @@
                                     <select id="role" name="role" class="form-select" required>
                                         <option disabled>Pilih Role</option>
                                         @foreach ($roles as $key => $value)
-                                            <option value="{{ $key }}" {{$user->role == $key ? 'selected' : ''}}>{{ $value }}</option>
+                                            <option value="{{ $key }}" {{ $user->role == $key ? 'selected' : '' }}>
+                                                {{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>

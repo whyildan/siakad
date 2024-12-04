@@ -25,6 +25,10 @@
                             <form action="{{ url('/createuser') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload Profile</label>
+                                    <input class="form-control" type="file" id="formFile" name="image" />
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                                     <div class="input-group input-group-merge">
                                         <input type="text" class="form-control" id="basic-icon-default-fullname"
