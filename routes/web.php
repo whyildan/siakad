@@ -12,9 +12,10 @@ use App\Http\Controllers\mapelController;
 use App\Http\Controllers\orangtuaController;
 use App\Http\Controllers\inputnilaiController;
 use App\Http\Controllers\mappingMapelController;
-use App\Http\Controllers\resetPasswordController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', [authController::class, 'main']);
 
 //akses sebelum login
 Route::middleware(['guest'])->group(function () {

@@ -12,7 +12,8 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    {{-- <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" /> --}}
+    {{--
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" /> --}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,6 +75,25 @@
                                 <i class="menu-icon tf-icons bx bx-user"></i>
                                 <div data-i18n="Without menu">User</div>
                             </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons bx bx-layout"></i>
+                                <div data-i18n="Mappings">Mappings</div>
+                            </a>
+
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="{{ url('map/classes') }}" class="menu-link">
+                                        <div data-i18n="Without menu">Mapping Kelas</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ url('map/subjects') }}" class="menu-link">
+                                        <div data-i18n="Without navbar">Mapping Mapel</div>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     @endcan
                     <li class="menu-item  {{ Request::is('student') ? 'active' : '' }}">
@@ -147,16 +167,6 @@
                         </div>
 
                         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                            <!-- Search -->
-                            <div class="navbar-nav align-items-center">
-                                <div class="nav-item d-flex align-items-center">
-                                    <i class="bx bx-search fs-4 lh-0"></i>
-                                    <input type="text" class="form-control border-0 shadow-none"
-                                        placeholder="Search..." aria-label="Search..." />
-                                </div>
-                            </div>
-                            <!-- /Search -->
-
                             <ul class="navbar-nav flex-row align-items-center ms-auto">
 
                                 <!-- User -->
@@ -164,7 +174,7 @@
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                         data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="{{ asset($user->image) }}" alt
+                                            <img src="{{ auth()->user()->image != null ? asset(auth()->user()->image) : asset('assets/images/default-profile.png') }}" alt
                                                 class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </a>
@@ -174,13 +184,12 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            <img src="{{ asset($user->image) }}" alt
+                                                            <img src="{{ auth()->user()->image != null ? asset(auth()->user()->image) : asset('assets/images/default-profile.png') }}" alt
                                                                 class="w-px-40 h-auto rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span
-                                                            class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                                        <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
                                                         <small class="text-muted">{{ auth()->user()->role }}</small>
                                                     </div>
                                                 </div>

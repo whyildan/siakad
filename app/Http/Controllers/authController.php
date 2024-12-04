@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class authController extends Controller
 {
+    public function main()
+    {
+        if(auth()){
+            return redirect('/dashboard');
+        }
+
+        return redirect('/login');
+    }
+
     public function login()
     {
         return view('auth.login');
