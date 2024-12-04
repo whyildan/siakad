@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama');
             $table->char('telepon', 13);
             $table->string('alamat');
-            $table->unsignedBigInteger('siswa_id');
             $table->timestamps();
             $table->softDeletes();
 

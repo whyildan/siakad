@@ -85,12 +85,17 @@
                             <ul class="menu-sub">
                                 <li class="menu-item">
                                     <a href="{{ url('map/classes') }}" class="menu-link">
-                                        <div data-i18n="Without menu">Mapping Kelas</div>
+                                        <div data-i18n="Without menu">Kelas</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="{{ url('map/subjects') }}" class="menu-link">
-                                        <div data-i18n="Without navbar">Mapping Mapel</div>
+                                        <div data-i18n="Without navbar">Mapel</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ url('map/extracurricular') }}" class="menu-link">
+                                        <div data-i18n="Without navbar">Ekstrakurikuler</div>
                                     </a>
                                 </li>
                             </ul>
@@ -136,18 +141,6 @@
                         <a href="{{ url('/subject') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book"></i>
                             <div data-i18n="Without navbar">Mapel</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ Request::is('grade') ? 'active' : '' }}">
-                        <a href="{{ url('/grade') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
-                            <div data-i18n="Container">Input Nilai</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ Request::is('mapping/mapel') ? 'active' : '' }}">
-                        <a href="{{ url('/mapping/subject') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
-                            <div data-i18n="Container">Mapping Mapel</div>
                         </a>
                     </li>
                 </ul>
