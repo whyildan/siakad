@@ -13,7 +13,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <h4 class="fw-bold py-3 mb-4">Manajemen Mapping Mapel</h4>
+        <h4 class="fw-bold py-3 mb-4">Manajemen Mapping Ekstrakurikuler</h4>
         <div class="card">
             <div class="card-header d-flex justify-content-end">
                 <button type="button" class="btn btn-primary"><a href="{{ url('/addmapping/subject') }}"
