@@ -20,8 +20,6 @@ class Siswa extends Model
         'alamat'
     ];
 
-    protected $hidden;
-
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);

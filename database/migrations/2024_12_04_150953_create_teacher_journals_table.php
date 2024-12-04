@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('class_student', function (Blueprint $table) {
+        Schema::create('teacher_journals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('guru_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('class_subject_id')->constrained('class_subjects')->onDelete('cascade');
+            $table->date('date');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('class_student');
+        Schema::dropIfExists('teacher_journals');
     }
 };

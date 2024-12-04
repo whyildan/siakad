@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jurnals', function (Blueprint $table) {
+        Schema::create('class_students', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mapping_mapel_id');
-            $table->date('tanggal');
-            $table->string('deskripsi');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
+            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
-
-            $table->foreign('mapping_mapel_id')->references('id')->on('mapping_mapels')->cascadeOnDelete();
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jurnals');
+        Schema::dropIfExists('class_student');
     }
 };

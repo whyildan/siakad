@@ -30,22 +30,17 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @forelse ($mappings as $mapping)
+                    @forelse ($classes as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $mapping->kelas->nama_kelas }}</td>
-                            <td>{{ $mapping->mapel->nama_mapel }}</td>
+                            <td>{{ $data->nama_kelas }}</td>
+                            <td>{{ $data->guru->nama }}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-warning"><a
                                         class="text-white text-decoration-none"
-                                        href="{{ url("/editmapping/subject/$mapping->id") }}"><i
+                                        href="{{ url("/map/classes/$data->id") }}"><i
                                             class="bx bx-edit-alt me-1"></i>
-                                        Edit</a></button>
-                                <button type="button" class="btn btn-sm btn-danger"><a
-                                        class="text-white text-decoration-none"
-                                        href="{{ url("/deletemapping/subject/$mapping->id") }}"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Delete</a></button>
+                                        Mapping Siswa</a></button>
                             </td>
                         </tr>
                     @empty

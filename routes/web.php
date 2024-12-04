@@ -4,6 +4,7 @@ use App\Http\Controllers\absenController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\ekskulController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\mappingKelasController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\guruController;
@@ -31,12 +32,21 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    $apiv1 = 'api/v1/';
+
     Route::get('/adduser', [userController::class, 'tambahuser']);
     Route::post('/createuser', action: [userController::class, 'createuser']);
     Route::get('/user', [userController::class, 'datauser']);
     Route::get('/edituser/{id}', [userController::class, 'edituser']);
     Route::post('/updateuser/{id}', [userController::class, 'updateuser']);
     Route::get('/deleteuser/{id}', [userController::class, 'deleteuser']);
+
+    Route::get('/map/classes', [mappingKelasController::class, 'index']);
+    Route::get('/map/classes/{id}', [mappingKelasController::class, 'detailMapping']);
+    // Route for API classes mapping
+    Route::post($apiv1 . 'map/class', [mappingKelasController::class, 'insertMapping']);
+    Route::get($apiv1 . 'map/students', [mappingKelasController::class, 'getStudentsMap']);
+
 });
 
 Route::middleware(['auth', 'role:admin,guru'])->group(function () {
@@ -105,4 +115,4 @@ Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     Route::get('/editgrade', [inputnilaiController::class, 'editnilai']);
 });
 
-Route::middleware(['auth', 'role:admin,guru,orang_tua'])->group(function () {});
+Route::middleware(['auth', 'role:admin,guru,orang_tua'])->group(function () { });

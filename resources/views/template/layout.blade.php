@@ -33,7 +33,9 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
+    @yield('css')
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
@@ -76,24 +78,24 @@
                                 <div data-i18n="Without menu">User</div>
                             </a>
                         </li>
-                        <li class="menu-item">
+                        <li class="menu-item {{ Request::is('map/classes') ? 'active open' : '' }} {{ Request::is('map/subjects') ? 'active open' : '' }} {{ Request::is('map/extracurricular') ? 'active open' : '' }}">
                             <a href="javascript:void(0);" class="menu-link menu-toggle">
                                 <i class="menu-icon tf-icons bx bx-layout"></i>
                                 <div data-i18n="Mappings">Mappings</div>
                             </a>
 
                             <ul class="menu-sub">
-                                <li class="menu-item">
+                                <li class="menu-item {{ Request::is('map/classes') ? 'active' : '' }}">
                                     <a href="{{ url('map/classes') }}" class="menu-link">
                                         <div data-i18n="Without menu">Kelas</div>
                                     </a>
                                 </li>
-                                <li class="menu-item">
+                                <li class="menu-item {{ Request::is(patterns: 'map/subjects') ? 'active' : '' }}">
                                     <a href="{{ url('map/subjects') }}" class="menu-link">
                                         <div data-i18n="Without navbar">Mapel</div>
                                     </a>
                                 </li>
-                                <li class="menu-item">
+                                <li class="menu-item {{ Request::is('map/extracurricular') ? 'active' : '' }}">
                                     <a href="{{ url('map/extracurricular') }}" class="menu-link">
                                         <div data-i18n="Without navbar">Ekstrakurikuler</div>
                                     </a>
@@ -228,12 +230,34 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <!-- Page JS -->
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                title: "Sukses!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonColor: "#556ee6",
+            })
+        @endif
+
+        @if (session(key: 'errors'))
+            Swal.fire({
+                title: "Gagal!",
+                text: "{{ session('errors') }}",
+                icon: "error",
+                confirmButtonColor: "#556ee6",
+            })
+        @endif
+    </script>
     @yield('script')
+    @yield('js')
 </body>
 
 </html>
