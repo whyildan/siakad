@@ -25,8 +25,6 @@ Route::middleware(['guest'])->group(function () {
 //akses setelah login
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [authController::class, 'logout']);
-    Route::get('/forgot_password', [resetPasswordController::class, 'resetpassword']);
-    Route::post('/forgot_password', [resetPasswordController::class, 'sendResetLink']);
     Route::get('/dashboard', [homeController::class, 'dashboard']);
 });
 

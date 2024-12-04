@@ -79,7 +79,7 @@ class userController extends Controller
             $user = User::findOrFail($id);
 
             $request->validate([
-                'foto_profil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'name' => 'required|string',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'nullable|min:6'
