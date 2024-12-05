@@ -64,10 +64,37 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label" for="orang_tua_nama">Nama Orang Tua</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="Nama" aria-label="Nama"
+                                            aria-describedby="basic-icon-default-fullname2" name="orang_tua_nama" required
+                                            value="{{ $siswa->user->name }}" />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="orang_tua_email">Email Orang Tua</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="email" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="email@email.com" aria-label="email"
+                                            aria-describedby="basic-icon-default-fullname2" name="orang_tua_email" required
+                                            value="{{ $siswa->user->email }}" />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Password</label><br>
+                                    <p class="mb-1 text-danger">*isi jika ingin ganti password</p>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="password" aria-label="password"
+                                            aria-describedby="basic-icon-default-fullname2" name="orang_tua_password" />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-phone">Telepon</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" id="basic-icon-default-phone" class="form-control phone-mask"
-                                            placeholder="08xxxxxx" aria-label="08xxxxxx"
+                                        <input type="number" id="basic-icon-default-phone"
+                                            class="form-control phone-mask" placeholder="08xxxxxx" aria-label="08xxxxxx"
                                             aria-describedby="basic-icon-default-phone2" name="telepon"
                                             value="{{ $siswa->telepon }}" required />
                                     </div>

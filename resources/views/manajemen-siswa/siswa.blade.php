@@ -28,6 +28,8 @@
                             <th>NIS</th>
                             <th>Kelas</th>
                             <th>Tanggal Lahir</th>
+                            <th>Nama Orang Tua</th>
+                            <th>Email Orang Tua</th>
                             <th>Telepon</th>
                             <th>Alamat</th>
                             <th>Action</th>
@@ -41,6 +43,8 @@
                                 <td>{{ $siswa->nis }}</td>
                                 <td>{{ $siswa->kelas->nama_kelas }}</td>
                                 <td>{{ $siswa->tanggal_lahir }}</td>
+                                <td>{{ $siswa->user->name }}</td>
+                                <td>{{ $siswa->user->email }}</td>
                                 <td>{{ $siswa->telepon }}</td>
                                 <td>{{ $siswa->alamat }}</td>
                                 <td>
@@ -56,7 +60,7 @@
                             </tr>
                         @empty
                             <tr class="text-center">
-                                <td colspan="8"><i>Tidak Ada Data Tersedia</i></td>
+                                <td colspan="10"><i>Tidak Ada Data Tersedia</i></td>
                             </tr>
                         @endforelse
                     </tbody>

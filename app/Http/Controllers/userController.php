@@ -81,7 +81,7 @@ class userController extends Controller
             $request->validate([
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'name' => 'required|string',
-                'email' => 'required|email|unique:users,email',
+                'email' => 'required|email',
                 'password' => 'nullable|min:6'
             ]);
 

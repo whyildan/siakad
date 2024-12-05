@@ -12,17 +12,16 @@ class Guru extends Model
     protected $table = 'gurus';
 
     protected $fillable = [
-        'nama',
-        'mapel_id',
+        'user_id',
         'telepon',
         'alamat'
     ];
 
     protected $hidden;
 
-    public function mapel()
+    public function user()
     {
-        return $this->belongsTo(Mapel::class, 'mapel_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function ekstrakurikuler()

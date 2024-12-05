@@ -40,7 +40,7 @@
                                         <option disabled>Pilih Guru</option>
                                         @foreach ($gurus as $guru)
                                             <option value="{{ $guru->id }}"
-                                                {{ $kelas->guru_id == $guru->id ? 'selected' : '' }}>{{ $guru->nama }}
+                                                {{ $kelas->guru_id == $guru->id ? 'selected' : '' }}>{{ $guru->user->nama }}
                                             </option>
                                         @endforeach
                                     </select>

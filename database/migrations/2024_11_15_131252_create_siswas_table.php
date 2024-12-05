@@ -15,12 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nis', 16);
+            $table->unsignedBigInteger('kelas_id');
             $table->date('tanggal_lahir');
             $table->char('telepon', 13);
-            $table->unsignedBigInteger('siswa_id');
+            $table->unsignedBigInteger('orang_tua_id');
             $table->string('alamat');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign(columns: 'orang_tua_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign(columns: 'kelas_id')->references('id')->on('kelas')->cascadeOnDelete();
         });
     }
 

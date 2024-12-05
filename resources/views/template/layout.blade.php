@@ -78,7 +78,8 @@
                                 <div data-i18n="Without menu">User</div>
                             </a>
                         </li>
-                        <li class="menu-item {{ Request::is('map/classes') ? 'active open' : '' }} {{ Request::is('map/subjects') ? 'active open' : '' }} {{ Request::is('map/extracurricular') ? 'active open' : '' }}">
+                        <li
+                            class="menu-item {{ Request::is('map/classes') ? 'active open' : '' }} {{ Request::is('map/subjects') ? 'active open' : '' }} {{ Request::is('map/extracurricular') ? 'active open' : '' }}">
                             <a href="javascript:void(0);" class="menu-link menu-toggle">
                                 <i class="menu-icon tf-icons bx bx-layout"></i>
                                 <div data-i18n="Mappings">Mappings</div>
@@ -169,8 +170,8 @@
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                         data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="{{ auth()->user()->image != null ? asset(auth()->user()->image) : asset('assets/images/default-profile.png') }}" alt
-                                                class="w-px-40 h-auto rounded-circle" />
+                                            <img src="{{ auth()->user()->image != null ? asset(auth()->user()->image) : asset('assets/images/default-profile.png') }}"
+                                                alt class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -179,12 +180,13 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            <img src="{{ auth()->user()->image != null ? asset(auth()->user()->image) : asset('assets/images/default-profile.png') }}" alt
-                                                                class="w-px-40 h-auto rounded-circle" />
+                                                            <img src="{{ auth()->user()->image != null ? asset(auth()->user()->image) : asset('assets/images/default-profile.png') }}"
+                                                                alt class="w-px-40 h-auto rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                                        <span
+                                                            class="fw-semibold d-block">{{ auth()->user()->name }}</span>
                                                         <small class="text-muted">{{ auth()->user()->role }}</small>
                                                     </div>
                                                 </div>

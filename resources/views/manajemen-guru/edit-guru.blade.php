@@ -26,39 +26,46 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="form-label" for="nama">Nama</label>
+                                    <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" name="nama" class="form-control"
-                                            id="basic-icon-default-fullname" placeholder="Masukkan Nama" aria-label="Nama"
-                                            aria-describedby="basic-icon-default-fullname2" value="{{ $guru->nama }}"
-                                            required />
+                                        <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="Nama" aria-label="Nama"
+                                            aria-describedby="basic-icon-default-fullname2" name="name"
+                                            value="{{ $guru->user->name }}" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="mapel_id" class="form-label">Mapel</label>
-                                    <select id="mapel_id" name="mapel_id" class="form-select" required>
-                                        <option disabled>Pilih Mapel</option>
-                                        @foreach ($mapels as $mapel)
-                                            <option value="{{ $mapel->id }}"
-                                                {{ $guru->mapel_id == $mapel->id ? 'selected' : '' }}>
-                                                {{ $mapel->nama_mapel }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label class="form-label" for="basic-icon-default-fullname">Email</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="email" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="email@email.com" aria-label="email"
+                                            aria-describedby="basic-icon-default-fullname2" name="email"
+                                            value="{{ $guru->user->email }}" required />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Password</label><br>
+                                    <p class="mb-1 text-danger">*isi jika ingin ganti password</p>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="password" aria-label="password"
+                                            aria-describedby="basic-icon-default-fullname2" name="password" />
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for=telepon">Telepon</label>
                                     <div class="input-group input-group-merge">
                                         <input type="number" name="telepon" class="form-control"
                                             id="basic-icon-default-fullname" placeholder="08xxxxxx" aria-label="Telepon"
-                                            aria-describedby="basic-icon-default-fullname2" value="{{ $guru->telepon }}"
-                                            required />
+                                            aria-describedby="basic-icon-default-fullname2" required
+                                            value="{{ $guru->telepon }}" />
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <textarea class="form-control" id="alamat" name="alamat" rows="3" required>{{ $guru->alamat }}</textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Send</button>
+                                <button type="submit" class="btn btn-warning">Send</button>
                             </form>
                         </div>
                     </div>

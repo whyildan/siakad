@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id('id');
-            $table->string('nama');
-            $table->unsignedBigInteger('mapel_id');
+            $table->unsignedBigInteger('user_id');
             $table->char('telepon', 13);
             $table->string('alamat');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('mapel_id')->references('id')->on('mapels')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 

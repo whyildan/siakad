@@ -25,7 +25,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Mapel</th>
+                            <th>Email</th>
                             <th>Telepon</th>
                             <th>Alamat</th>
                             <th>Action</th>
@@ -35,8 +35,8 @@
                         @forelse ($gurus as $guru)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $guru->nama }}</td>
-                                <td>{{ $guru->mapel->nama_mapel }}</td>
+                                <td>{{ $guru->user->name }}</td>
+                                <td>{{ $guru->user->email }}</td>
                                 <td>{{ $guru->telepon }}</td>
                                 <td>{{ $guru->alamat }}</td>
                                 <td>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
-use App\Models\Mapel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class guruController extends Controller
@@ -12,7 +12,7 @@ class guruController extends Controller
     {
         try {
 
-            $gurus = Guru::with('mapel')->get();
+            $gurus = Guru::with('user')->get();
             return view('manajemen-guru.guru', compact('gurus'));
         } catch (\Exception $e) {
             return back()->with('gagal', 'Data Gagal Dimuat😵');
@@ -21,25 +21,34 @@ class guruController extends Controller
 
     public function tambahguru()
     {
-        try {
-            $mapels = Mapel::all();
-            return view('manajemen-guru.tambah-guru', ['hideNavbar' => true], compact('mapels'));
-        } catch (\Exception $e) {
-            return back()->with('gagal', 'Form Gagal Dimuat😵');
-        }
+        return view('manajemen-guru.tambah-guru', ['hideNavbar' => true]);
     }
 
     public function createteacher(Request $request)
     {
-        $validated = $request->validate([
-            'nama' => 'required|string',
-            'mapel_id' => 'required|exists:mapels,id',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
             'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',
-            'alamat' => 'required|string'
+            'alamat' => 'required|string',
         ]);
 
         try {
-            Guru::create($validated);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => 'guru', // Pastikan role diset sebagai "guru"
+            ]);
+
+            // Simpan data guru
+            Guru::create([
+                'user_id' => $user->id,
+                'telepon' => $request->telepon,
+                'alamat' => $request->alamat,
+            ]);
+
             return redirect('/teacher')->with('sukses', 'Data Berhasil Ditambah🥳');
         } catch (\Exception $e) {
             return back()->with('gagal', 'Data Gagal Ditambah😵');
@@ -48,28 +57,42 @@ class guruController extends Controller
 
     public function editguru($id)
     {
-        $guru = Guru::find($id);
-
-        if (!$guru) {
-            return back()->with('gagal', 'Guru Tidak Ditemukan😵');
-        }
-
-        $mapels = Mapel::all();
-        return view('manajemen-guru.edit-guru', ['hideNavbar' => true], compact('mapels', 'guru'));
+        $guru = Guru::with('user')->findOrFail($id);
+        return view('manajemen-guru.edit-guru', ['hideNavbar' => true], compact('guru'));
     }
 
     public function updateteacher(Request $request, $id)
     {
-        $validated = $request->validate([
-            'nama' => 'required|string',
-            'mapel_id' => 'required|exists:mapels,id',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
             'telepon' => 'required|string|max:13|regex:/^[0-9]+$/',
-            'alamat' => 'required|string'
+            'alamat' => 'required|string',
         ]);
 
         try {
+            // Ambil data guru
             $guru = Guru::findOrFail($id);
-            $guru->update($validated);
+
+            // Update data user
+            $userData = [
+                'name' => $request->name,
+                'email' => $request->email,
+            ];
+
+            // Periksa jika password diisi
+            if ($request->filled('password')) {
+                $userData['password'] = bcrypt($request->password);
+            }
+
+            $guru->user->update($userData);
+
+            // Update data guru
+            $guru->update([
+                'telepon' => $request->telepon,
+                'alamat' => $request->alamat,
+            ]);
 
             return redirect('/teacher')->with('sukses', 'Data Sukses Diedit🥳');
         } catch (\Exception $e) {
@@ -80,8 +103,14 @@ class guruController extends Controller
     public function hapusguru($id)
     {
         try {
-            Guru::findOrFail($id);
-            Guru::destroy($id);
+            // Ambil data guru
+            $guru = Guru::findOrFail($id);
+
+            // Hapus data guru
+            $guru->delete();
+
+            // Hapus data user terkait
+            $guru->user->delete();
 
             return back()->with('sukses', 'Data Berhasil Dihapus🥳');
         } catch (\Exception $e) {

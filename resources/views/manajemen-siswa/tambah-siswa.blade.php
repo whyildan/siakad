@@ -58,6 +58,33 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label" for="orang_tua_nama">Nama Orang Tua</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="Nama" aria-label="Nama"
+                                            aria-describedby="basic-icon-default-fullname2" name="orang_tua_nama"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="orang_tua_email">Email Orang Tua</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="email" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="email@email.com" aria-label="email"
+                                            aria-describedby="basic-icon-default-fullname2" name="orang_tua_email"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="password" aria-label="password"
+                                            aria-describedby="basic-icon-default-fullname2" name="orang_tua_password"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label" for="basic-icon-default-phone">Telepon</label>
                                     <div class="input-group input-group-merge">
                                         <input type="number" id="basic-icon-default-phone" class="form-control phone-mask"

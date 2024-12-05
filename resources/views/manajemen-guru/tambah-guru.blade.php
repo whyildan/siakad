@@ -24,21 +24,28 @@
                             <form action="{{ url('/createteacher') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="form-label" for="nama">Nama</label>
+                                    <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" name="nama" class="form-control"
-                                            id="basic-icon-default-fullname" placeholder="Masukkan Nama" aria-label="Nama"
-                                            aria-describedby="basic-icon-default-fullname2" required />
+                                        <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="Nama" aria-label="Nama"
+                                            aria-describedby="basic-icon-default-fullname2" name="name" required />
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="mapel_id" class="form-label">Mapel</label>
-                                    <select id="mapel_id" name="mapel_id" class="form-select" required>
-                                        <option>Pilih Mapel</option>
-                                        @foreach ($mapels as $mapel)
-                                            <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label class="form-label" for="basic-icon-default-fullname">Email</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="email" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="email@email.com" aria-label="email"
+                                            aria-describedby="basic-icon-default-fullname2" name="email" required />
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control" id="basic-icon-default-fullname"
+                                            placeholder="password" aria-label="password"
+                                            aria-describedby="basic-icon-default-fullname2" name="password" required />
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for=telepon">Telepon</label>

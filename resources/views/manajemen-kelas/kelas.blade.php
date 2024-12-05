@@ -15,17 +15,6 @@
         @endif
         <div class="d-flex align-items-center justify-content-between">
             <h4 class="fw-bold py-3 mb-4">Manajemen Data Kelas</h4>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="javascript:void(0);">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="javascript:void(0);">Library</a>
-                    </li>
-                    <li class="breadcrumb-item active">Data</li>
-                </ol>
-            </nav>
         </div>
         <div class="card">
             <div class="card-header d-flex justify-content-end">
@@ -47,7 +36,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $kls->nama_kelas }}</td>
-                                <td>{{ $kls->guru->nama }}</td>
+                                <td>{{ $kls->guru->user->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-warning"><a
                                             class="text-white text-decoration-none"

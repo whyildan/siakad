@@ -17,21 +17,22 @@ class Siswa extends Model
         'kelas_id',
         'tanggal_lahir',
         'telepon',
+        'orang_tua_id',
         'alamat'
     ];
 
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class);
-    }
-
-    public function orangtua()
-    {
-        return $this->hasOne(OrangTua::class);
+        return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 
     public function absensis()
     {
         return $this->hasMany(JurnalAbsensi::class, 'siswa_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'orang_tua_id');
     }
 }

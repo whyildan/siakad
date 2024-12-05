@@ -46,8 +46,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Route for API classes mapping
     Route::post($apiv1 . 'map/class', [mappingKelasController::class, 'insertMapping']);
     Route::get($apiv1 . 'map/students', [mappingKelasController::class, 'getStudentsMap']);
-
 });
+
 
 Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     Route::get('/student', [siswaController::class, 'datasiswa']);
@@ -85,13 +85,6 @@ Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     Route::post('/updatemapping/subject/{id}', [mappingMapelController::class, 'updatemapping']);
     Route::get('/deletemapping/subject/{id}', [mappingMapelController::class, 'deletemapping']);
 
-    Route::get('/parent', [orangtuaController::class, 'dataorangtua']);
-    Route::get('/addparent', [orangtuaController::class, 'tambahorangtua']);
-    Route::post('/createparent', [orangtuaController::class, 'createparent']);
-    Route::get('/editparent/{id}', [orangtuaController::class, 'editorangtua']);
-    Route::post('/updateparent/{id}', [orangtuaController::class, 'updateparent']);
-    Route::get('/deleteparent/{id}', [orangtuaController::class, 'deleteparent']);
-
     Route::get('/extracurricular', [ekskulController::class, 'dataekskul']);
     Route::get('/addextracurricular', [ekskulController::class, 'tambahekskul']);
     Route::post('/createextracurricular', [ekskulController::class, 'createextra']);
@@ -115,4 +108,4 @@ Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     Route::get('/editgrade', [inputnilaiController::class, 'editnilai']);
 });
 
-Route::middleware(['auth', 'role:admin,guru,orang_tua'])->group(function () { });
+Route::middleware(['auth', 'role:admin,guru,orang_tua'])->group(function () {});

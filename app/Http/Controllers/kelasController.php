@@ -11,7 +11,7 @@ class kelasController extends Controller
     public function datakelas()
     {
         try {
-            $kelas = Kelas::with('guru')->get();
+            $kelas = Kelas::with('guru.user')->get();
             return view('manajemen-kelas.kelas', compact('kelas'));
         } catch (\Exception $e) {
             return back()->with('gagal', 'Data Tidak Dapat Dimuat😵');

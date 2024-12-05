@@ -37,7 +37,7 @@
                                     <select id="guru_id" name="guru_id" class="form-select" required>
                                         <option>Pilih Guru</option>
                                         @foreach ($gurus as $guru)
-                                            <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                                            <option value="{{ $guru->id }}">{{ $guru->user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
