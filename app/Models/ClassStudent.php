@@ -11,11 +11,11 @@ class ClassStudent extends Model
 
     protected $table = 'class_students';
 
-    protected $fillable = ['kelas_id', 'siswa_id'];
+    protected $fillable = ['class_id', 'student_id'];
 
     // Relasi dengan Student
     public function student()
     {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
+        return $this->belongsTo(Student::class, 'student_id');
     }
 }

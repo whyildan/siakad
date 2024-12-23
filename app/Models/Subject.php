@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Nilai extends Model
+class Subject extends Model
 {
     use HasFactory;
 
-    protected $table = 'nilais';
+    protected $table = 'subjects';
 
     protected $fillable = [
-        'siswa_id',
-        'mapel_id',
-        'nilai',
-        'tanggal',
-        'keterangan'
+        'subject_name'
     ];
 
     protected $hidden;
+
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class, 'subject_id');
+    }
 }

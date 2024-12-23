@@ -48,13 +48,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function guru()
+    public function teacher()
     {
-        return $this->hasOne(Guru::class, 'user_id');
+        return $this->hasOne(Teacher::class, 'user_id');
     }
 
-    public function orang_tua()
+    public function parent()
     {
-        return $this->hasOne(Siswa::class, 'orang_tua_id');
+        return $this->hasOne(Student::class, 'parent_id');
     }
 }

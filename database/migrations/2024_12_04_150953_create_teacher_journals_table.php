@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('teacher_journals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('class_subject_id')->constrained('class_subjects')->onDelete('cascade');
             $table->date('date');
             $table->text('content');

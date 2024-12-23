@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Guru extends Model
+class Teacher extends Model
 {
     use HasFactory;
 
-    protected $table = 'gurus';
+    protected $table = 'teachers';
 
     protected $fillable = [
         'user_id',
-        'telepon',
-        'alamat'
+        'telephone',
+        'address'
     ];
 
     protected $hidden;
@@ -24,13 +24,13 @@ class Guru extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function ekstrakurikuler()
+    public function extracurricular()
     {
-        return $this->hasOne(Ekstrakurikuler::class);
+        return $this->hasOne(Extracurricular::class);
     }
 
-    public function kelas()
+    public function class()
     {
-        return $this->hasOne(Kelas::class, 'guru_id');
+        return $this->hasOne(Classes::class, 'teacher_id');
     }
 }
