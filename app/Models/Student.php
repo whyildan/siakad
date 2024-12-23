@@ -16,7 +16,7 @@ class Student extends Model
         'student_identification_number',
         'class_id',
         'date_of_birth',
-        'telephone',
+        'phone_number',
         'parent_id',
         'address'
     ];

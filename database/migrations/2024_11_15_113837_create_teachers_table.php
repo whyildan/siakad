@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('user_id');
-            $table->char('telephone', 13);
+            $table->char('phone_number', 13);
             $table->string('address');
             $table->timestamps();
             $table->softDeletes();

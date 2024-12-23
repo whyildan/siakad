@@ -13,7 +13,7 @@ class Teacher extends Model
 
     protected $fillable = [
         'user_id',
-        'telephone',
+        'phone_number',
         'address'
     ];
 

@@ -14,7 +14,7 @@ class userController extends Controller
         try {
             $users = User::all();
 
-            return view('manajemen-user.user', compact('users'));
+            return view('user.index', compact('users'));
         } catch (\Exception $e) {
             return back()->with('gagal', 'Data Gagal Dimuat😵');
         }
@@ -22,8 +22,8 @@ class userController extends Controller
 
     public function tambahuser()
     {
-        $roles = ['admin' => 'Admin', 'guru' => 'Guru', 'orang_tua' => 'Orang Tua'];
-        return view('manajemen-user.tambah-user', ['hideNavbar' => true], compact('roles'));
+        $roles = ['admin' => 'Admin', 'teacher' => 'Guru', 'parent' => 'Orang Tua'];
+        return view('user.add', ['hideNavbar' => true], compact('roles'));
     }
 
     public function createuser(Request $request)
@@ -34,7 +34,7 @@ class userController extends Controller
                 'name' => 'required|string',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:6',
-                'role' => 'required|in:admin,guru,orang_tua'
+                'role' => 'required|in:admin,teacher,parent'
             ]);
 
             // Proses upload foto profil
@@ -64,13 +64,13 @@ class userController extends Controller
     public function edituser($id)
     {
         $user = User::find($id);
-        $roles = ['admin' => 'Admin', 'guru' => 'Guru', 'orang_tua' => 'Orang Tua'];
+        $roles = ['admin' => 'Admin', 'teacher' => 'Guru', 'parent' => 'Orang Tua'];
 
         if (!$user) {
             return back()->with('gagal', 'Data Tidak Ditemukan😵');
         }
 
-        return view('manajemen-user.edit-user', ['hideNavbar' => true], compact('user', 'roles'));
+        return view('user.update', ['hideNavbar' => true], compact('user', 'roles'));
     }
 
     public function updateuser(Request $request, $id)

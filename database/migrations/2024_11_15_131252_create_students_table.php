@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('student_identification_number', 16);
             $table->unsignedBigInteger('class_id');
             $table->date('date_of_birth');
-            $table->char('telephone', 13);
+            $table->char('phone_number', 13);
             $table->unsignedBigInteger('parent_id');
             $table->string('address');
             $table->timestamps();

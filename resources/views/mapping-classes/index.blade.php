@@ -33,8 +33,8 @@
                     @forelse ($classes as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $data->nama_kelas }}</td>
-                            <td>{{ $data->guru->nama }}</td>
+                            <td>{{ $data->class_name }}</td>
+                            <td>{{ $data->teacher->user->name }}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-warning"><a
                                         class="text-white text-decoration-none"
