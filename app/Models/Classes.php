@@ -23,6 +23,11 @@ class Classes extends Model
         return $this->belongsTo(Teacher::class, 'teacher_id');
     }
 
+    public function advisor()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
+
     public function students()
     {
         return $this->hasMany(Student::class, 'class_id');

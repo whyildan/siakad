@@ -134,15 +134,15 @@ class subjectController extends Controller
     {
         $classes = Classes::with('advisor', 'academicyear')->orderBy('name')->get();
 
-        return view('app.subject.mapping', compact('classes'));
+        return view('mapping-subject.index', compact('classes'));
     }
 
     public function detailMapping(Request $request, $id)
     {
-        $mapClass = Classes::with('advitesor', 'academicyear')->where('id', $id)->orderBy('name')->first();
+        $mapClass = Classes::with('advisor', 'academicyear')->where('id', $id)->orderBy('name')->first();
         $classSubjects = ClassSubject::with('subject', 'teacher')->where('class_id', $mapClass->id)->get()->sortBy('subject.name');
 
-        return view('app.subject.mapping_detail', compact('mapClass', 'classSubjects'));
+        return view('mapping-subject.detail', compact('mapClass', 'classSubjects'));
     }
 
     public function getSubjects(Request $request)
