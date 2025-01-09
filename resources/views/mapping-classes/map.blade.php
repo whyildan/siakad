@@ -25,12 +25,12 @@
                         <tr>
                             <td class="card-title">Kelas </td>
                             <td class="card-title">:</td>
-                            <td class="card-title fw-light">{{ $mapClass->nama_kelas }}</td>
+                            <td class="card-title fw-light">{{ $mapClass->class_name }}</td>
                         </tr>
                         <tr>
                             <td class="card-title">Walikelas </td>
                             <td class="card-title">:</td>
-                            <td class="card-title fw-light">{{ $mapClass->guru->nama }}</td>
+                            <td class="card-title fw-light">{{ $mapClass->teacher->user->name }}</td>
                         </tr>
                     </table>
                 </div>

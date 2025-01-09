@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('teacher_journal_attendances', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('teacher_journal_id')->constrained('teacher_journals')->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            $table->enum('statu', ['hadir', 'izin', 'sakit', 'alfa']);
             $table->timestamps();
         });
     }

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('student_identification_number', 16);
-            $table->unsignedBigInteger('class_id');
             $table->date('date_of_birth');
             $table->char('phone_number', 13);
             $table->unsignedBigInteger('parent_id');
@@ -24,7 +23,6 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign(columns: 'parent_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign(columns: 'class_id')->references('id')->on('classes')->cascadeOnDelete();
         });
     }
 

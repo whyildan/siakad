@@ -15,13 +15,12 @@
     @endif
     <h4 class="fw-bold py-3 mb-4">Manajemen Mapping Kelas</h4>
     <div class="card">
-        <div class="card-header d-flex justify-content-end">
-            <button type="button" class="btn btn-primary"><a href="{{ url('/addmapping/subject') }}"
-                    class="text-white text-decoration-none"><i class='bx bx-plus-circle me-1'></i>Tambah</a></button>
+        <div class="card-header">
+            <h5>Daftar Kelas</h5>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-striped">
-                <thead>
+                <thead class="text-center">
                     <tr>
                         <th>No</th>
                         <th>Kelas</th>
@@ -29,7 +28,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody class="table-border-bottom-0">
+                <tbody class="table-border-bottom-0 text-center">
                     @forelse ($classes as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
