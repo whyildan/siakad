@@ -36,11 +36,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/updateuser/{id}', [userController::class, 'updateuser']);
     Route::get('/deleteuser/{id}', [userController::class, 'deleteuser']);
 
+    // Classes mappings
     Route::get('/map/classes', [mappingClassController::class, 'index']);
     Route::get('/map/classes/{id}', [mappingClassController::class, 'detailMapping']);
     // Route for API classes mapping
     Route::post($apiv1 . 'map/class', [mappingClassController::class, 'insertMapping']);
     Route::get($apiv1 . 'map/students', [mappingClassController::class, 'getStudentsMap']);
+
+    // Route for subject mapping
+    Route::get('map/subjects', [subjectController::class, 'mapping']);
+    Route::get('map/subject/{id}', [subjectController::class, 'detailMapping']);
+    // Route for API subject mapping
+    Route::post($apiv1 . 'map/subject', [subjectController::class, 'insertMapping']);
+    Route::get($apiv1 . 'map/subjects', [subjectController::class, 'getSubjects']);
+    Route::get($apiv1 . 'map/subject_teachers', [subjectController::class, 'getTeachers']);
+    Route::post($apiv1 . 'map/subject/import', [subjectController::class, 'import'])->name('schedule.import');
 });
 
 

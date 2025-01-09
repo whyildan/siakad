@@ -23,34 +23,31 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>#</th>
                             <th>Kelas</th>
-                            <th>Mapel</th>
-                            <th>Action</th>
+                            <th>Walikelas</th>
+                            <th>Jurusan</th>
+                            <th>Tahun Ajaran</th>
+                            <th>Mapping</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @forelse ($mappings as $mapping)
+                        @foreach ($classes as $class)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $mapping->kelas->nama_kelas }}</td>
-                                <td>{{ $mapping->mapel->nama_mapel }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-warning"><a
-                                            class="text-white text-decoration-none"
-                                            href="{{ url("/editmapping/subject/$mapping->id") }}"><i class="bx bx-edit-alt me-1"></i>
-                                            Edit</a></button>
-                                    <button type="button" class="btn btn-sm btn-danger"><a
-                                            class="text-white text-decoration-none"
-                                            href="{{ url("/deletemapping/subject/$mapping->id") }}"><i class="bx bx-trash me-1"></i>
-                                            Delete</a></button>
+                                <td>{{ $class->name }}</td>
+                                <td>{{ $class->advisor->name }}</td>
+                                <td>{{ $class->major->name }}</td>
+                                <td>{{ $class->academicyear->year }}</td>
+                                <td align="center">
+                                    <a href="{{ url("/map/subject/$class->id") }}" class="btn btn-sm btn-primary">Map</a>
                                 </td>
                             </tr>
                         @empty
                             <tr class="text-center">
                                 <td colspan="4"><i>Tidak Ada Data Tersedia</i></td>
                             </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

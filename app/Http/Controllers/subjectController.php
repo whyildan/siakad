@@ -2,11 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
+use App\Models\ClassSubject;
 use App\Models\Subject;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class subjectController extends Controller
 {
+    /**
+     * Convert schedule string to JSON format.
+     *
+     * @param  string  $schedules
+     * @return string
+     */
+    private function convertScheduleToJson($schedule)
+    {
+        $days = [];
+        $entries = explode(';', $schedule);
+
+        // Map untuk konversi nama hari dari Indonesia ke Inggris
+        $dayMap = [
+            'Senin' => 'Monday',
+            'Selasa' => 'Tuesday',
+            'Rabu' => 'Wednesday',
+            'Kamis' => 'Thursday',
+            'Jumat' => 'Friday',
+            'Sabtu' => 'Saturday',
+            'Minggu' => 'Sunday'
+        ];
+
+        foreach ($entries as $entry) {
+            list($day, $times) = explode(',', $entry);
+            $day = trim($day);
+            list($start_time, $end_time) = explode('-', $times);
+
+            // Konversi nama hari ke bahasa Inggris
+            if (isset($dayMap[$day])) {
+                $day = $dayMap[$day];
+            }
+
+            if (!isset($days[$day])) {
+                $days[$day] = [];
+            }
+
+            $days[$day][] = [
+                'start_time' => trim($start_time),
+                'end_time' => trim($end_time)
+            ];
+        }
+
+        return json_encode($days);
+    }
+
     public function datamapel()
     {
         try {
@@ -79,6 +127,74 @@ class subjectController extends Controller
             return redirect()->back()->with('sukses', "Data Berhasil Dihapus🥳");
         } catch (\Exception $e) {
             return redirect()->back()->with('gagal', "Data Gagal Dihapus😵");
+        }
+    }
+
+    public function mapping(Request $request)
+    {
+        $classes = Classes::with('advisor', 'academicyear')->orderBy('name')->get();
+
+        return view('app.subject.mapping', compact('classes'));
+    }
+
+    public function detailMapping(Request $request, $id)
+    {
+        $mapClass = Classes::with('advitesor', 'academicyear')->where('id', $id)->orderBy('name')->first();
+        $classSubjects = ClassSubject::with('subject', 'teacher')->where('class_id', $mapClass->id)->get()->sortBy('subject.name');
+
+        return view('app.subject.mapping_detail', compact('mapClass', 'classSubjects'));
+    }
+
+    public function getSubjects(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Subject::query();
+
+        if ($search) {
+            $query->where('name', 'LIKE', "%{$search}%");
+        }
+
+        $subjects = $query->select('id', 'name')->paginate(10);
+
+        return response()->json($subjects);
+    }
+
+    public function getTeachers(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Teacher::query();
+
+        if ($search) {
+            $query->where('fullname', 'LIKE', "%{$search}%");
+        }
+
+        $teachers = $query->select('id', 'fullname')->paginate(10);
+
+        return response()->json($teachers);
+    }
+
+    public function insertMapping(Request $request)
+    {
+        try {
+            ClassSubject::create([
+                'subject_id' => $request->subject_id,
+                'teacher_id' => $request->teacher_id,
+                'class_id' => $request->class_id,
+                'academic_year_id' => 1,
+                'schedule' => $this->convertScheduleToJson($request->schedules),
+            ]);
+
+            return response()->json([
+                'msg' => 'Data jadwal berhasil ditambahkan',
+            ], 201);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'msg' => 'Data jadwal gagal ditambahkan',
+                'throw' => $th->getMessage()
+            ], 400);
         }
     }
 }
