@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\authController;
 use App\Http\Controllers\extraController;
+use App\Http\Controllers\gradeController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\journalController;
 use App\Http\Controllers\mappingClassController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\studentController;
 use App\Http\Controllers\classController;
 use App\Http\Controllers\teacherController;
 use App\Http\Controllers\subjectController;
@@ -51,16 +53,38 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get($apiv1 . 'map/subjects', [subjectController::class, 'getSubjects']);
     Route::get($apiv1 . 'map/subject_teachers', [subjectController::class, 'getTeachers']);
     Route::post($apiv1 . 'map/subject/import', [subjectController::class, 'import'])->name('schedule.import');
+
+    // Route for classes journal
+    Route::get('classes', [classController::class, 'main']);
+    Route::get('classes/journal/{id}', [journalController::class, 'journal']);
+    Route::get('classes/journal/grades/{id}', [journalController::class, 'journalGrade']);
+    Route::get('classes/journal/export/{id}', [journalController::class, 'journalExport']);
+    Route::get($apiv1 . 'journals', [journalController::class, 'get'])->name('api.get-journals');
+    Route::post($apiv1 . 'journal', [journalController::class, 'insert'])->name('api.insert-journals');
+    Route::delete($apiv1 . 'journal/{id}', [journalController::class, 'destroy']);
+
+    Route::get($apiv1 . 'journal/{journal}/attendance', [journalController::class, 'getAttendance']);
+    Route::post($apiv1 . 'journal/{journal}/attendance', [journalController::class, 'saveAttendance']);
+
+    Route::post($apiv1 . 'save-grades/{classSubjectId}', [journalController::class, 'saveGrades'])->name('grades.save');
+
+    Route::get('grades/project/{classSubjectId}', [gradeController::class, 'projectGrade'])->name('grade.project');
+    Route::get('grades/formative/{classSubjectId}', [gradeController::class, 'formativeGrade'])->name('grade.formative');
+    Route::get('grades/summative/{classSubjectId}', [gradeController::class, 'summativeGrade'])->name('grade.summative');
+    Route::get('grades/view/{classSubjectId}', [gradeController::class, 'viewGrade'])->name('grade.view');
+    Route::post('grades', [gradeController::class, 'saveGrades'])->name('grade.save');
+    // Route to fetch grades based on semester
+    Route::get($apiv1 . 'fetch-grades/{classSubjectId}', [JournalController::class, 'fetchGrades'])->name('grades.fetch');
 });
 
 
 Route::middleware(['auth', 'role:admin,guru'])->group(function () {
-    Route::get('/student', [StudentController::class, 'datasiswa']);
-    Route::get('/addstudent', [StudentController::class, 'tambahsiswa']);
-    Route::post('/createstudent', [StudentController::class, 'createstudent']);
-    Route::get('/editstudent/{id}', [StudentController::class, 'editsiswa']);
-    Route::post('/updatestudent/{id}', [StudentController::class, 'updatestudent']);
-    Route::get('/deletestudent/{id}', [StudentController::class, 'deletestudent']);
+    Route::get('/student', [studentController::class, 'datasiswa']);
+    Route::get('/addstudent', [studentController::class, 'tambahsiswa']);
+    Route::post('/createstudent', [studentController::class, 'createstudent']);
+    Route::get('/editstudent/{id}', [studentController::class, 'editsiswa']);
+    Route::post('/updatestudent/{id}', [studentController::class, 'updatestudent']);
+    Route::get('/deletestudent/{id}', [studentController::class, 'deletestudent']);
 
     Route::get('/class', [classController::class, 'datakelas']);
     Route::get('/addclass', [classController::class, 'tambahkelas']);

@@ -7,7 +7,7 @@ use App\Models\Classes;
 use App\Models\Student;
 use App\Models\User;
 
-class StudentController extends Controller
+class studentController extends Controller
 {
     public function datasiswa()
     {

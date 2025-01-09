@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassSubject;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Classes;
@@ -81,5 +82,19 @@ class classController extends Controller
         } catch (\Exception $e) {
             return back()->with('gagal', 'Data Gagal Dihapus😵');
         }
+    }
+
+    public function main()
+    {
+        $role = auth()->user()->role;
+        $classes = null;
+
+        if ($role == 'teacher') {
+            $classes = ClassSubject::with('class', 'subject', 'teacher')->where('academic_year_id', 1)->where('teacher_id', auth()->user()->teacher->id)->get();
+        } else if ($role == 'student') {
+            $classes = ClassSubject::with('class', 'subject', 'teacher')->where('academic_year_id', 1)->where('class_id', auth()->user()->student->studentClass->class_id)->get();
+        }
+
+        return view('class.main', compact('classes', 'role'));
     }
 }
