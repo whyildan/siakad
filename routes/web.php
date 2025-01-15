@@ -11,6 +11,7 @@ use App\Http\Controllers\classController;
 use App\Http\Controllers\teacherController;
 use App\Http\Controllers\subjectController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\parentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [authController::class, 'main']);
@@ -113,4 +114,6 @@ Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     Route::get('/editextracurricular/{id}', [extraController::class, 'editekskul']);
     Route::post('/updateextracurricular/{id}', [extraController::class, 'updateextra']);
     Route::get('/deleteextracurricular/{id}', [extraController::class, 'deleteextra']);
+
+    Route::get('/parent', [parentController::class, 'index']);
 });
