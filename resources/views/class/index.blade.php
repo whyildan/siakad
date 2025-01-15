@@ -28,6 +28,7 @@
                             <th>No</th>
                             <th>Kelas</th>
                             <th>Wali Kelas</th>
+                            <th>Tahun Ajaran</th>
                             <th>Action</th>
                         </tr>
                     </thead>

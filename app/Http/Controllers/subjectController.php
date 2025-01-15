@@ -132,15 +132,15 @@ class subjectController extends Controller
 
     public function mapping(Request $request)
     {
-        $classes = Classes::with('advisor', 'academicyear')->orderBy('name')->get();
+        $classes = Classes::with('advisor', 'academicyear')->orderBy('class_name')->get();
 
         return view('mapping-subject.index', compact('classes'));
     }
 
     public function detailMapping(Request $request, $id)
     {
-        $mapClass = Classes::with('advisor', 'academicyear')->where('id', $id)->orderBy('name')->first();
-        $classSubjects = ClassSubject::with('subject', 'teacher')->where('class_id', $mapClass->id)->get()->sortBy('subject.name');
+        $mapClass = Classes::with('advisor', 'academicyear')->where('id', $id)->orderBy('class_name')->first();
+        $classSubjects = ClassSubject::with('subject', 'teacher')->where('class_id', $mapClass->id)->get()->sortBy('subject.subject_name');
 
         return view('mapping-subject.detail', compact('mapClass', 'classSubjects'));
     }
@@ -152,10 +152,10 @@ class subjectController extends Controller
         $query = Subject::query();
 
         if ($search) {
-            $query->where('name', 'LIKE', "%{$search}%");
+            $query->where('subject_name', 'LIKE', "%{$search}%");
         }
 
-        $subjects = $query->select('id', 'name')->paginate(10);
+        $subjects = $query->select('id', 'subject_name')->paginate(10);
 
         return response()->json($subjects);
     }

@@ -11,7 +11,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <h4 class="fw-bold py-3 mb-4">Tambah Data Kelas</h4>
+        <h4 class="fw-bold py-3 mb-4">Daftar Jurnal Kelas</h4>
 
         <!-- Basic Layout -->
         <div class="row">

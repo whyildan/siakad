@@ -15,9 +15,8 @@
         @endif
         <h4 class="fw-bold py-3 mb-4">Manajemen Mapping Mapel</h4>
         <div class="card">
-            <div class="card-header d-flex justify-content-end">
-                <button type="button" class="btn btn-primary"><a href="{{ url('/addmapping/subject') }}"
-                        class="text-white text-decoration-none"><i class='bx bx-plus-circle me-1'></i>Tambah</a></button>
+            <div class="card-header d-flex">
+                <h4>List Kelas</h4>
             </div>
             <div class="table-responsive text-nowrap">
                 <table class="table table-striped">
@@ -26,18 +25,16 @@
                             <th>#</th>
                             <th>Kelas</th>
                             <th>Walikelas</th>
-                            <th>Jurusan</th>
                             <th>Tahun Ajaran</th>
                             <th>Mapping</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($classes as $class)
+                        @forelse ($classes as $class)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $class->name }}</td>
-                                <td>{{ $class->advisor->name }}</td>
-                                <td>{{ $class->major->name }}</td>
+                                <td>{{ $class->class_name }}</td>
+                                <td>{{ $class->advisor->fullname }}</td>
                                 <td>{{ $class->academicyear->year }}</td>
                                 <td align="center">
                                     <a href="{{ url("/map/subject/$class->id") }}" class="btn btn-sm btn-primary">Map</a>
@@ -47,7 +44,7 @@
                             <tr class="text-center">
                                 <td colspan="4"><i>Tidak Ada Data Tersedia</i></td>
                             </tr>
-                        @endforeach
+                        @endforelse
                     </tbody>
                 </table>
             </div>

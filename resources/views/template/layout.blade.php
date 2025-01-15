@@ -103,49 +103,50 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="menu-item {{ Request::is('subject') ? 'active' : '' }}">
+                            <a href="{{ url('/subject') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-book"></i>
+                                <div data-i18n="Without navbar">Mapel</div>
+                            </a>
+                        </li>
+                        <li class="menu-item  {{ Request::is('student') ? 'active' : '' }}">
+                            <a href="{{ url('/student') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                                <div data-i18n="Without menu">Siswa</div>
+                            </a>
+                        </li>
+                        <li class="menu-item  {{ Request::is('class') ? 'active' : '' }}">
+                            <a href="{{ url('/class') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-group"></i>
+                                <div data-i18n="Without navbar">Kelas</div>
+                            </a>
+                        </li>
+                        <li class="menu-item  {{ Request::is('parent') ? 'active' : '' }}">
+                            <a href="{{ url('/parent') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-user-pin"></i>
+                                <div data-i18n="Container">Orang Tua</div>
+                            </a>
+                        </li>
+                        <li class="menu-item {{ Request::is('extracurricular') ? 'active' : '' }}">
+                            <a href="{{ url('/extracurricular') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-football"></i>
+                                <div data-i18n="Container">Ekstrakurikuler</div>
+                            </a>
+                        </li>
+                        <li class="menu-item {{ Request::is('teacher') ? 'active' : '' }}">
+                            <a href="{{ url('/teacher') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-briefcase"></i>
+                                <div data-i18n="Without menu">Guru</div>
+                            </a>
+                        </li>
                     @endcan
-                    <li class="menu-item  {{ Request::is('student') ? 'active' : '' }}">
-                        <a href="{{ url('/student') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                            <div data-i18n="Without menu">Siswa</div>
-                        </a>
-                    </li>
-                    <li class="menu-item  {{ Request::is('class') ? 'active' : '' }}">
-                        <a href="{{ url('/class') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-group"></i>
-                            <div data-i18n="Without navbar">Kelas</div>
-                        </a>
-                    </li>
-                    <li class="menu-item  {{ Request::is('parent') ? 'active' : '' }}">
-                        <a href="{{ url('/parent') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-user-pin"></i>
-                            <div data-i18n="Container">Orang Tua</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ Request::is('extracurricular') ? 'active' : '' }}">
-                        <a href="{{ url('/extracurricular') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-football"></i>
-                            <div data-i18n="Container">Ekstrakurikuler</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ Request::is('teacher') ? 'active' : '' }}">
-                        <a href="{{ url('/teacher') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-briefcase"></i>
-                            <div data-i18n="Without menu">Guru</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ Request::is('journal') ? 'active' : '' }}">
-                        <a href="{{ url('/journal') }}" class="menu-link">
+                    <li class="menu-item {{ Request::is('classes') ? 'active' : '' }}">
+                        <a href="{{ url('/classes') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-book-content"></i>
                             <div data-i18n="Without navbar">Jurnal</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ Request::is('subject') ? 'active' : '' }}">
-                        <a href="{{ url('/subject') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-book"></i>
-                            <div data-i18n="Without navbar">Mapel</div>
-                        </a>
-                    </li>
+
                 </ul>
             </aside>
             <!-- / Menu -->
@@ -185,8 +186,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <span
-                                                            class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                                        <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
                                                         <small class="text-muted">{{ auth()->user()->role }}</small>
                                                     </div>
                                                 </div>
